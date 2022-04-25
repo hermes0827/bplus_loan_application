@@ -1,113 +1,17 @@
-extends templates/base
+extends ./templates/base.pug
 
 block content 
-  div
-  .max-w-3xl.mx-auto
-    div(data-xt-toggle='{ min: 1, duration: 500 }')
-      .xt-row.xt-row-4(class='md:xt-row-8')
-        .w-full(class='md:w-4/12')
-          .xt-card.p-2.rounded-2xl.text-gray-900.xt-links-default.bg-white.bg-opacity-80.backdrop-filter.backdrop-blur-sm.backdrop-saturate-50
-            nav.xt-list.xt-list-1.flex-col(aria-label='Navigation')
-              a.xt-button.flex-auto.px-3.text-sm.rounded-2xl.flex-auto.font-medium.leading-snug.justify-start.text-left.transition(role='button' class='py-1.5 hover:bg-white hover:text-primary-500 active:text-white active:bg-primary-500 on:text-white on:bg-primary-500' data-xt-toggle-element='' data-xt-hash='description')
-                svg.xt-icon.text-lg.opacity-50.mr-2(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
-                  path(d='M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z')
-                  polyline(points='13 2 13 9 20 9')
-                |  Description
-              a.xt-button.flex-auto.px-3.text-sm.rounded-2xl.flex-auto.font-medium.leading-snug.justify-start.text-left.transition(role='button' class='py-1.5 hover:bg-white hover:text-primary-500 active:text-white active:bg-primary-500 on:text-white on:bg-primary-500' data-xt-toggle-element='' data-xt-hash='features')
-                svg.xt-icon.text-lg.opacity-50.mr-2(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
-                  path(d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z')
-                  polyline(points='14 2 14 8 20 8')
-                  line(x1='16' y1='13' x2='8' y2='13')
-                  line(x1='16' y1='17' x2='8' y2='17')
-                  polyline(points='10 9 9 9 8 9')
-                |  Features
-              a.xt-button.flex-auto.px-3.text-sm.rounded-2xl.flex-auto.font-medium.leading-snug.justify-start.text-left.transition(role='button' class='py-1.5 hover:bg-white hover:text-primary-500 active:text-white active:bg-primary-500 on:text-white on:bg-primary-500' data-xt-toggle-element='' data-xt-hash='accessories')
-                svg.xt-icon.text-lg.opacity-50.mr-2(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
-                  line(x1='16.5' y1='9.4' x2='7.5' y2='4.21')
-                  path(d='M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z')
-                  polyline(points='3.27 6.96 12 12.01 20.73 6.96')
-                  line(x1='12' y1='22.08' x2='12' y2='12')
-                |  Accessories
-              a.xt-button.flex-auto.px-3.text-sm.rounded-2xl.flex-auto.font-medium.leading-snug.justify-start.text-left.transition(role='button' class='py-1.5 hover:bg-white hover:text-primary-500 active:text-white active:bg-primary-500 on:text-white on:bg-primary-500' data-xt-toggle-element='' data-xt-hash='manuals')
-                svg.xt-icon.text-lg.opacity-50.mr-2(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
-                  path(d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4')
-                  polyline(points='7 10 12 15 17 10')
-                  line(x1='12' y1='15' x2='12' y2='3')
-                |  Manuals
-        .w-full(class='md:w-8/12')
-          .transition.opacity-0.scale-95(class='off:hidden out:pointer-events-none in:opacity-100 in:scale-100 out:scale-105' data-xt-toggle-target='')
-            .xt-card.rounded-2xl.p-6.text-sm.text-gray-900.xt-links-default.bg-white(class='sm:p-8')
-              .xt-h5 Description
-              p
-                strong Lorem ipsum
-                |  dolor sit amet, 
-                a(href='/') consectetur adipiscing
-                |  elit. Nullam
-                |                 suscipit, velit eu tristique mollis, dui felis dictum turpis, a auctor est odio ac diam. Sed mauris
-                |                 augue, sagittis vitae magna eget, vehicula scelerisque elit.
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis purus odio, et dictum felis
-                | vestibulum sed. Morbi sodales ex sed dui posuere, a tempor purus consectetur. Curabitur vitae leo at
-                | magna aliquam pellentesque. Nam sed neque in risus volutpat maximus. Sed vitae enim vehicula, lacinia
-                | orci at, pretium nulla. Cras tincidunt quis ipsum et luctus. Cras venenatis, justo in euismod lacinia,
-                | urna leo hendrerit enim, sit amet gravida nunc lectus id augue. Nullam dolor nibh, commodo at commodo
-                | eget, iaculis non diam. Ut at rhoncus massa. Sed placerat tincidunt nisl, eu consequat neque pretium
-                | at. Cras et facilisis leo. Mauris justo elit, porttitor sed pellentesque vitae, imperdiet nec ante.
-                | Nulla quis tempus risus, a aliquet ligula.
-          .transition.opacity-0.scale-95(class='off:hidden out:pointer-events-none in:opacity-100 in:scale-100 out:scale-105' data-xt-toggle-target='')
-            .xt-card.rounded-2xl.p-6.text-sm.text-gray-900.xt-links-default.bg-white(class='sm:p-8')
-              .xt-h5 Features
-              p
-                strong Lorem ipsum
-                |  dolor sit amet, 
-                a(href='/') consectetur adipiscing
-                |  elit. Nullam
-                |                 suscipit, velit eu tristique mollis, dui felis dictum turpis, a auctor est odio ac diam. Sed mauris
-                |                 augue, sagittis vitae magna eget, vehicula scelerisque elit.
-          .transition.opacity-0.scale-95(class='off:hidden out:pointer-events-none in:opacity-100 in:scale-100 out:scale-105' data-xt-toggle-target='')
-            .xt-card.rounded-2xl.p-6.text-sm.text-gray-900.xt-links-default.bg-white(class='sm:p-8')
-              .xt-h5 Accessories
-              p
-                strong Lorem ipsum
-                |  dolor sit amet, 
-                a(href='/') consectetur adipiscing
-                |  elit. Nullam
-                |                 suscipit, velit eu tristique mollis, dui felis dictum turpis, a auctor est odio ac diam. Sed mauris
-                |                 augue, sagittis vitae magna eget, vehicula scelerisque elit.
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis purus odio, et dictum felis
-                | vestibulum sed. Morbi sodales ex sed dui posuere, a tempor purus consectetur. Curabitur vitae leo at
-                | magna aliquam pellentesque. Nam sed neque in risus volutpat maximus. Sed vitae enim vehicula, lacinia
-                | orci at, pretium nulla. Cras tincidunt quis ipsum et luctus. Cras venenatis, justo in euismod lacinia,
-                | urna leo hendrerit enim, sit amet gravida nunc lectus id augue. Nullam dolor nibh, commodo at commodo
-                | eget, iaculis non diam. Ut at rhoncus massa. Sed placerat tincidunt nisl, eu consequat neque pretium
-                | at. Cras et facilisis leo. Mauris justo elit, porttitor sed pellentesque vitae, imperdiet nec ante.
-                | Nulla quis tempus risus, a aliquet ligula.
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis purus odio, et dictum felis
-                | vestibulum sed. Morbi sodales ex sed dui posuere, a tempor purus consectetur. Curabitur vitae leo at
-                | magna aliquam pellentesque. Nam sed neque in risus volutpat maximus. Sed vitae enim vehicula, lacinia
-                | orci at, pretium nulla. Cras tincidunt quis ipsum et luctus. Cras venenatis, justo in euismod lacinia,
-                | urna leo hendrerit enim, sit amet gravida nunc lectus id augue. Nullam dolor nibh, commodo at commodo
-                | eget, iaculis non diam. Ut at rhoncus massa. Sed placerat tincidunt nisl, eu consequat neque pretium
-                | at. Cras et facilisis leo. Mauris justo elit, porttitor sed pellentesque vitae, imperdiet nec ante.
-                | Nulla quis tempus risus, a aliquet ligula.
-          .transition.opacity-0.scale-95(class='off:hidden out:pointer-events-none in:opacity-100 in:scale-100 out:scale-105' data-xt-toggle-target='')
-            .xt-card.rounded-2xl.p-6.text-sm.text-gray-900.xt-links-default.bg-white(class='sm:p-8')
-              .xt-h5 Manuals
-              p
-                strong Lorem ipsum
-                |  dolor sit amet, 
-                a(href='/') consectetur adipiscing
-                |  elit. Nullam
-                |                 suscipit, velit eu tristique mollis, dui felis dictum turpis, a auctor est odio ac diam. Sed mauris
-                |                 augue, sagittis vitae magna eget, vehicula scelerisque elit.
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis purus odio, et dictum felis
-                | vestibulum sed. Morbi sodales ex sed dui posuere, a tempor purus consectetur. Curabitur vitae leo at
-                | magna aliquam pellentesque. Nam sed neque in risus volutpat maximus. Sed vitae enim vehicula, lacinia
-                | orci at, pretium nulla. Cras tincidunt quis ipsum et luctus. Cras venenatis, justo in euismod lacinia,
-                | urna leo hendrerit enim, sit amet gravida nunc lectus id augue. Nullam dolor nibh, commodo at commodo
-                | eget, iaculis non diam. Ut at rhoncus massa. Sed placerat tincidunt nisl, eu consequat neque pretium
-                | at. Cras et facilisis leo. Mauris justo elit, porttitor sed pellentesque vitae, imperdiet nec ante.
-                | Nulla quis tempus risus, a aliquet ligula.
+  div(class="hero min-h-screen bg-base-200")
+    div(class="hero-content text-center")
+      div(class="max-w-md")
+        img(src='static/img/BPLUS_main_logo.png' class='py-10')
+        div(class="divider") 
+        span(class="text-4xl font-bold") 안녕하세요! 
+        span(class="text-primary text-4xl font-bold") 비플러스
+        span(class="text-4xl font-bold") 입니다.
+        p(class="py-6") 비플러스에서는 동네에서 투자받을 수 있습니다.
+        a(class="btn btn-primary" href='/apply') 접수하기
+
+
+
+

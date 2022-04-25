@@ -1,0 +1,3 @@
+{
+  "ignore": ["gulpfile.babel.js", "src/public/*"]
+}
