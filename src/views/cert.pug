@@ -1,0 +1,44 @@
+extends ./templates/base.pug
+
+block content 
+  div(class="hero min-h-screen bg-base-200")
+    div(class="hero-content text-center")
+      div(class="max-w-md")
+        h1(class="text-3xl font-bold") 공동인증서 인증을 진행합니다.
+        p(class="py-6") Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
+        div(class='flex justify-around')
+          a(class="btn btn-primary" id='cert') Get Started
+          a(class="btn btn-outline btn-accent" id='downloadCertModule' src='static/cert/ExAdapter_Web_Setup_20210225.exe') Button
+  div(class="dim-layer")
+    div(class="dimBg")
+      #layer(class="pop-layer")
+        div(class="pop-container")
+          div(style="float: left; font-size: 2em; font-weight: bold; color: teal") 공인인증 전자서명
+          div(style="height: 100px")
+          div(style="font-size: 1.6em; font-weight: bold; margin-bottom: 5px") 인증서 선택
+          div
+            div(style="width: 520px")
+              table(style="width: 520px; border: 0px; table-layout: fixed")
+                thead
+                  tr
+                    th(style="width: auto; border: 1px solid rgba(128, 128, 128, 0.2)") 구분
+                    th(style="width: 230px; border: 1px solid rgba(128, 128, 128, 0.2)") 인증서명
+                    th(style="width: 100px; border: 1px solid rgba(128, 128, 128, 0.2)") 만료일
+                    th(style="width: 100px; border: 1px solid rgba(128, 128, 128, 0.2)") 발급자
+                    th(style="width: 40px; border: 1px solid rgba(128, 128, 128, 0.2)") 위치
+            div(style="width: 537px; height: 200px; overflow-y: scroll")
+              table(style="width: 100%; margin-bottom: 30px; border: 0px; table-layout: fixed")
+                tbody#tbody(style="text-align: center")
+          div
+            div(style="font-size: 1.6em; font-weight: bold; margin-bottom: 5px; border-bottom: 1px solid #ddd; margin-top: 40px")
+              | 인증서 암호입력
+            div(style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center")
+              input#signPw(type="password", style="width: 500px; height: 30px; margin-top: 10px")
+              div(style="font-size: 1.2em; margin-top: 10px") 안전한 개인정보 관리를 위해 6개월마다 비밀번호를 변경하기 바랍니다.
+          div(class="pop-conts", style="border-top: 1px solid #ddd; margin-top: 10px")
+            div(style="display: flex; flex-direction: row; justify-content: center; align-items: center; margin-top: 10px")
+              button(class="btn btn-default btn-layerClose", style="margin-right: 20px", id='certCancel') 취소
+              button(class="btn btn-success btn-layerConfirm", id='certConfirm') 확인
+
+block scripts
+  script(src="/static/js/cert.js", type='module')

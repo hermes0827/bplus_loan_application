@@ -1,21 +1,30 @@
 const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Dotenv = require("dotenv-webpack");
 const CopyPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const BASE_JS = "./src/public/js/";
 
 module.exports = {
-  entry: "./src/public/js/main.js",
+  entry: {
+    main: BASE_JS + "main.js",
+    home: BASE_JS + "home.js",
+    apply: BASE_JS + "apply.js",
+    cert: BASE_JS + "cert.js",
+  },
   plugins: [
+    new Dotenv(),
+    new CopyPlugin({
+      patterns: [{ from: "src/public/cert", to: "cert" }],
+    }),
     new MiniCssExtractPlugin({
       filename: "css/styles.css",
-    }),
-    new CopyPlugin({
-      patterns: [{ from: "src/public/images", to: "img" }],
     }),
   ],
   mode: "development",
   watch: true,
   output: {
-    filename: "js/main.js",
+    filename: "js/[name].js",
     path: path.resolve(__dirname, "assets"),
     clean: true,
   },
@@ -36,7 +45,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset",
+        type: "asset/resource",
       },
     ],
   },
