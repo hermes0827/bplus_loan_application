@@ -82,8 +82,16 @@ const fnCheckAuth = () => {
   document.getElementById("encrypt_data").value = encrypted;
   document.getElementById("time_stamp").value = time_stamp;
 
-  if (document.getElementById("res_name").value === "") {
-    alert("값을 입력하세요.");
+  if (
+    document.getElementById("res_name").value === "" ||
+    document.getElementById("res_no1").value === "" ||
+    document.getElementById("res_no2").value === "" ||
+    document.getElementById("cust_key").value === "" ||
+    document.getElementById("biz_no").value === ""
+  ) {
+    document.form.addEventListener("click", (e) => e.preventDefault());
+    document.getElementById("errorModal").classList.remove("hidden");
+    document.getElementById("errorModal").classList.add("flex");
   } else {
     fnSendData(encrypted);
     // setTimeout(() => {

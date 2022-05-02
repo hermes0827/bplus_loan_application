@@ -1,6 +1,7 @@
 extends ./templates/base.pug
 
 block content 
+
   div(class="hero min-h-screen bg-base-200")
     div(class="hero-content text-center")
       div(class="max-w-md")
@@ -9,9 +10,13 @@ block content
         div(class='flex justify-around')
           a(class="btn btn-primary" id='cert') Get Started
           a(class="btn btn-outline btn-accent" id='downloadCertModule' src='static/cert/ExAdapter_Web_Setup_20210225.exe') Button
+
   div(class="dim-layer")
+
+
     div(class="dimBg")
       #layer(class="pop-layer")
+
         div(class="pop-container")
           div(style="float: left; font-size: 2em; font-weight: bold; color: teal") 공인인증 전자서명
           div(style="height: 100px")
@@ -39,6 +44,8 @@ block content
             div(style="display: flex; flex-direction: row; justify-content: center; align-items: center; margin-top: 10px")
               button(class="btn btn-default btn-layerClose", style="margin-right: 20px", id='certCancel') 취소
               button(class="btn btn-success btn-layerConfirm", id='certConfirm') 확인
+
+
 
 block scripts
   script(src="/static/js/cert.js", type='module')

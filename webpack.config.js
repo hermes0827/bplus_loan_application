@@ -11,6 +11,7 @@ module.exports = {
     home: BASE_JS + "home.js",
     apply: BASE_JS + "apply.js",
     cert: BASE_JS + "cert.js",
+    scraping: BASE_JS + "scraping.js",
   },
   plugins: [
     new Dotenv(),

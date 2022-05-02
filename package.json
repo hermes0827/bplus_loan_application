@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node src/server.js",
-    "assets": "webpack --config webpack.config.js"
+    "start": "node build/init.js",
+    "dev": "nodemon",
+    "assets": "webpack --config webpack.config.js",
+    "build:server": "babel src -d build"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +23,7 @@
     "gulp-postcss": "^9.0.1",
     "gulp-sass": "^5.1.0",
     "helmet": "^5.0.2",
+    "http-proxy-middleware": "^2.0.6",
     "jquery": "^3.6.0",
     "morgan": "^1.10.0",
     "node-sass": "^7.0.1",
@@ -30,6 +33,7 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.17.6",
     "@babel/core": "^7.13.10",
     "@babel/node": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
