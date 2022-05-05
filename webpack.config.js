@@ -12,6 +12,7 @@ module.exports = {
     apply: BASE_JS + "apply.js",
     cert: BASE_JS + "cert.js",
     scraping: BASE_JS + "scraping.js",
+    scrapingFromHyphen: BASE_JS + "scrapingFromHyphen.js",
   },
   plugins: [
     new Dotenv(),
@@ -22,8 +23,6 @@ module.exports = {
       filename: "css/styles.css",
     }),
   ],
-  mode: "development",
-  watch: true,
   output: {
     filename: "js/[name].js",
     path: path.resolve(__dirname, "assets"),

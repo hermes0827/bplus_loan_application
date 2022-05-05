@@ -1,19 +1,20 @@
 {
   "name": "bplus_loan_application",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "node build/init.js",
-    "dev": "nodemon",
-    "assets": "webpack --config webpack.config.js",
-    "build:server": "babel src -d build"
+    "dev:server": "nodemon",
+    "dev:assets": "webpack --mode=development -w",
+    "build": "npm run build:server && npm run build:assets",
+    "build:server": "babel src -d build",
+    "build:assets": "webpack --mode=production"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@tailwindcss/typography": "^0.5.2",
     "axios": "^0.27.0",
+    "buffer": "^6.0.3",
     "crypto-js": "^4.1.1",
     "daisyui": "^2.14.2",
     "del": "^6.0.0",

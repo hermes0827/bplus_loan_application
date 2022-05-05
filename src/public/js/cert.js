@@ -24,7 +24,7 @@ $(function () {
 
 function selectedCertExecution() {
   selectedCert.signPw = $("#signPw").val();
-  sessionStorage.setItem("signPW", $("#signPw").val());
+  sessionStorage.setItem("signPw", $("#signPw").val());
 
   if (selectedCert.signCert === undefined || selectedCert.signCert === null) {
     alert("인증서를 선택해주세요");
