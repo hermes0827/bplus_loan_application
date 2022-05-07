@@ -7,7 +7,7 @@ block content
     div
       svg(xmlns="http://www.w3.org/2000/svg", class="stroke-current flex-shrink-0 h-6 w-6", fill="none", viewBox="0 0 24 24")
         path(stroke-linecap="round", stroke-linejoin="round", stroke-width="2", d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z")
-          span Error! Task failed successfully.
+          span 입력한 정보를 다시 확인하여 주세요!
 
   div(class="hero min-h-screen bg-base-200")
     div(class="hero-content flex-col lg:flex-row-reverse")
@@ -17,6 +17,8 @@ block content
         p 핸드폰 또는 신용카드 인증이 필요하므로 준비해주세요.
         p(class="font-bold") 여러 번 조회해도 신용점수에 영향을 주지 않습니다.
         p(class="py-6 text-xs") 한도조회결과는 영업시간 중 한 시간 이내 / 영업시간 이외 익일 오전 통보됩니다.
+        a(class="link link-primary hidden" id='nextPage' href='/kyc') I&apos;m a simple link
+
       div(class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-20")
         div(class="card-body")
           form(name="form" method='post')
@@ -45,9 +47,13 @@ block content
             div(class="form-control")
               label(class="label")
                 span(class="label-text") 전화번호
-              input(id='cust_key' type="text", placeholder="01012345678", maxlength="11", class="input input-bordered")
+              input(id='cust_key' type="tel", pattern="[0-9]{11}" placeholder="01012345678", maxlength="11", class="input input-bordered")
+            div(class="form-control")
+              label(class="label")
+                span(class="label-text") 이메일
+              input(id='email' type="email", placeholder="example@example.com", class="input input-bordered")
             div(class="form-control mt-6")
-              button(class="btn btn-primary" id="sendNice") 제출하기
+              a(class="btn btn-primary" id="sendNice") 제출하기
             
 
 block scripts

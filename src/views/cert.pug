@@ -1,15 +1,28 @@
 extends ./templates/base.pug
 
-block content 
+block content
+  div(class="alert shadow-lg z-10 absolute justify-center ease-in-out")
+    div
+      svg(xmlns="http://www.w3.org/2000/svg", fill="none", viewBox="0 0 24 24", class="stroke-info flex-shrink-0 w-6 h-6")
+        path(stroke-linecap="round", stroke-linejoin="round", stroke-width="2", d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z")
+      span we use cookies for no reason.
+    div(class="flex-none")
+      button(class="btn btn-sm btn-primary") Accept
+
 
   div(class="hero min-h-screen bg-base-200")
+  
     div(class="hero-content text-center")
       div(class="max-w-md")
         h1(class="text-3xl font-bold") 공동인증서 인증을 진행합니다.
-        p(class="py-6") Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
-        div(class='flex justify-around')
-          a(class="btn btn-primary" id='cert') Get Started
-          a(class="btn btn-outline btn-accent" id='downloadCertModule' src='static/cert/ExAdapter_Web_Setup_20210225.exe') Button
+        p(class="py-6") 해당 단계는 Windows PC 에서만 진행 가능합니다.
+        p 공동인증서가 없으시거나, Windows OS가 아니신가요?
+        | 아래 링크로 접속하여 서류를 제출해주세요.
+
+        div(class='flex justify-around py-6')
+          a(class="btn btn-primary" id='cert') 인증하기
+          a(class="btn btn-outline btn-accent" id='downloadCertModule' href='static/cert/ExAdapter_Web_Setup_20210225.exe') 모듈 다운로드
+        p(class="py-6") 챗봇으로 서류 제출하기
 
   div(class="dim-layer")
 

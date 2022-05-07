@@ -1,6 +1,4 @@
 import CryptoJS from "crypto-js";
-import axios from "axios";
-import qs from "qs";
 
 const button = document.getElementById("sendNice");
 
@@ -92,7 +90,9 @@ const fnCheckAuth = () => {
     document.form.addEventListener("click", (e) => e.preventDefault());
     document.getElementById("errorModal").classList.remove("hidden");
     document.getElementById("errorModal").classList.add("flex");
-  } else {
+  } else if (sessionStorage.getItem("cust_key") !== "") {
+    document.getElementById("nextPage").classList.remove("hidden");
+    document.getElementById("nextPage").classList.add("flex");
     fnSendData(encrypted);
     // setTimeout(() => {
     //   this.sendNateon(res_name);
@@ -123,4 +123,12 @@ const fnCheckAuth = () => {
 //     });
 // };
 
+const errorModalHandler = () => {
+  document.getElementById("errorModal").classList.remove("flex");
+  document.getElementById("errorModal").classList.add("hidden");
+};
+
 button.addEventListener("click", fnCheckAuth);
+document
+  .getElementById("errorModal")
+  .addEventListener("click", errorModalHandler);

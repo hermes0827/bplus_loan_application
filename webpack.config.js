@@ -11,6 +11,7 @@ module.exports = {
     home: BASE_JS + "home.js",
     apply: BASE_JS + "apply.js",
     cert: BASE_JS + "cert.js",
+    kyc: BASE_JS + "kyc.js",
     scraping: BASE_JS + "scraping.js",
     scrapingFromHyphen: BASE_JS + "scrapingFromHyphen.js",
   },

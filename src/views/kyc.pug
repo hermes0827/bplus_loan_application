@@ -1,0 +1,178 @@
+extends ./templates/base.pug
+
+block content 
+  section(class="max-h-full w-full bg-white")
+    div(class="flex max-h-full flex-col lg:flex-row")
+      div(class="relative w-full bg-gradient-to-r from-white via-white to-gray-100 bg-cover lg:w-6/12 xl:w-6/12")
+        div(class="relative my-20 flex h-full w-full flex-col items-center justify-center px-10 lg:my-0 lg:h-1/3 lg:px-16")
+          div(class="flex flex-col tracking-tight lg:fixed")
+            div(class="relative")
+              p(class="mb-2 font-medium uppercase text-gray-700") 적합성 원칙 판단
+              h2(class="text-4xl font-bold text-gray-900 xl:text-4xl")
+                | 일반금융소비자의 정보를 파악합니다.
+            p(class="text-xl text-gray-700")
+              | 금융소비자보호법상 적합성 원칙에 따라 금융소비자의 정보를 파악합니다.
+              br
+      div(class="flex max-h-full items-center justify-center bg-white py-10 lg:w-6/12 xl:w-6/12")
+        form#formKYC(class="mx-10 max-h-full w-9/12 shadow-lg")
+          div(class="overflow-hidden shadow-xl sm:rounded-md")
+            div(class="space-y-6 bg-white px-4 py-5 sm:p-6")
+              fieldset(class='hidden')
+                input#cust_key(name='cust_key')
+              fieldset
+                div
+                  legend(class="text-base font-medium text-gray-900") 연소득
+                  p(class="text-sm text-gray-500")
+                    | These are delivered via SMS to your mobile phone.
+                div(class="mt-4 space-y-4")
+                  div(class="flex items-center")
+                    input#income_20K(name="income", type="radio", required, class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="income_20K", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 2천만원 미만
+                  div(class="flex items-center")
+                    input#income_100K(name="income", type="radio", class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="income_100K", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 2천만원 이상 1억원 미만
+                  div(class="flex items-center")
+                    input#income_over10K(name="income", type="radio", class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="income_over10K", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 1억원 이상
+              fieldset
+                div
+                  legend(class="text-base font-medium text-gray-900") 순자산규모
+                  p(class="text-sm text-gray-500")
+                    | These are delivered via SMS to your mobile phone.
+                div(class="mt-4 space-y-4")
+                  div(class="flex items-center")
+                    input#asset_10K(name="asset", type="radio", required, class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="asset_10K", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 1천만원 미만
+                  div(class="flex items-center")
+                    input#asset_50K(name="asset", type="radio", class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="asset_50K", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 1천만원 이상 5천만원 미만
+                  div(class="flex items-center")
+                    input#asset_over50K(name="asset", type="radio", class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="asset_over50K", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 5천만원 이상
+              fieldset
+                div
+                  legend(class="text-base font-medium text-gray-900") 부채규모
+                  p(class="text-sm text-gray-500")
+                    | These are delivered via SMS to your mobile phone.
+                div(class="mt-4 space-y-4")
+                  div(class="flex items-center")
+                    input#debt_10K(name="debt", type="radio", required, class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="debt_10K", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 1천만원 미만
+                  div(class="flex items-center")
+                    input#debt_50K(name="debt", type="radio", class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="debt_50K", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 1천만원 이상 5천만원 미만
+                  div(class="flex items-center")
+                    input#debt_over50K(name="debt", type="radio", class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="debt_over50K", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 5천만원 이상
+              fieldset
+                div
+                  legend(class="text-base font-medium text-gray-900")
+                    | 소득 대비 고정 비용 지출은 어느 정도입니까?
+                  p(class="text-sm text-gray-500")
+                    | These are delivered via SMS to your mobile phone.
+                div(class="mt-4 space-y-4")
+                  div(class="flex items-center")
+                    input#cost_overIncome(name="cost", type="radio", required, class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="cost_overIncome", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 연간 소득 초과
+                  div(class="flex items-center")
+                    input#cost_underIncome(name="cost", type="radio", class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="cost_underIncome", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 연간 소득 이하
+              fieldset
+                div
+                  legend(class="text-base font-medium text-gray-900") 대출용도
+                  p(class="text-sm text-gray-500")
+                    | These are delivered via SMS to your mobile phone.
+                div(class="mt-4 space-y-4")
+                  div(class="flex items-center")
+                    input#purpose_repayment(name="purpose", type="radio", required, class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="purpose_repayment", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 기존 대출 상환
+                  div(class="flex items-center")
+                    input#purpose_facilities(name="purpose", type="radio", class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="purpose_facilities", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 시설자금
+                  div(class="flex items-center")
+                    input#purpose_working(name="purpose", type="radio", class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="purpose_working", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 운영자금
+                  div(class="flex items-center")
+                    input#purpose_deposit(name="purpose", type="radio", class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="purpose_deposit", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 임대차 보증금
+                  div(class="flex items-center")
+                    input#purpose_etc(name="purpose", type="radio", class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="purpose_etc", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 기타
+              fieldset
+                div
+                  legend(class="text-base font-medium text-gray-900") 변제방법
+                  p(class="text-sm text-gray-500")
+                    | These are delivered via SMS to your mobile phone.
+                div(class="mt-4 space-y-4")
+                  div(class="flex items-center")
+                    input#payment_by_business(name="payment_by", type="radio", required, class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="payment_by_business", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 사업소득
+                  div(class="flex items-center")
+                    input(id="payment_by_rent", name="payment_by", type="radio", class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="payment_by_rent", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 임대소득
+                  div(class="flex items-center")
+                    input(id="payment_by_finance", name="payment_by", type="radio", class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="payment_by_finance", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 금융소득
+                  div(class="flex items-center")
+                    input(id="payment_by_gift", name="payment_by", type="radio", class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="payment_by_gift", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 상속/증여
+                  div(class="flex items-center")
+                    input(id="payment_by_etc", name="payment_by", type="radio", class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="payment_by_etc", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 기타
+              fieldset
+                div
+                  legend(class="text-base font-medium text-gray-900")
+                    | 대출을 이용한 적이 있습니까?
+                  p(class="text-sm text-gray-500")
+                    | These are delivered via SMS to your mobile phone.
+                div(class="mt-4 space-y-4")
+                  div(class="flex items-center")
+                    input#banking_exp_positive(name="banking_exp", type="radio", required, class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="banking_exp_positive", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 네
+                  div(class="flex items-center")
+                    input#banking_exp_negative(name="banking_exp", type="radio", class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="banking_exp_negative", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 아니오
+              fieldset
+                div
+                  legend(class="text-base font-medium text-gray-900")
+                    | 해당 대출 상품에 대해 이해하고 있습니까?
+                  p(class="text-sm text-gray-500")
+                    | These are delivered via SMS to your mobile phone.
+                div(class="mt-4 space-y-4")
+                  div(class="flex items-center")
+                    input#understanding_positive(name="understanding", type="radio", required, class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="understanding_positive", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 네
+                  div(class="flex items-center")
+                    input#understanding_negative(name="understanding", type="radio", class="h-4 w-4 border-gray-300 text-yellow-300 focus:ring-yellow-400")
+                    label(for="understanding_negative", class="ml-3 block text-sm font-medium text-gray-700")
+                      | 아니오
+            div(class="bg-gray-100 px-4 py-3 text-right sm:px-6")
+                button#submitKYC(class="inline-flex items-center justify-center rounded-md border border-transparent bg-yellow-400 px-5 py-3 text-base font-medium leading-6 text-black transition duration-150 ease-in-out hover:bg-yellow-500 focus:outline-none")
+                  | 제출하기
+
+block scripts
+  script(src="/static/js/kyc.js", type='module')
