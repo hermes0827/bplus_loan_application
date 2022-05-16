@@ -1,0 +1,33 @@
+extends base.pug
+
+block content
+  div#confirmModal(class="hidden alert alert-success shadow-lg z-10 absolute justify-center ease-in-out")
+    div
+      svg(xmlns="http://www.w3.org/2000/svg", class="stroke-current flex-shrink-0 h-6 w-6", fill="none", viewBox="0 0 24 24")
+        path(stroke-linecap="round", stroke-linejoin="round", stroke-width="2", d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z")
+          span 로그인 성공! 
+          button(class="btn btn-outline btn-sm") 다음 페이지
+
+  div#erroModal(class="hidden alert alert-error shadow-lg z-10 absolute justify-center ease-in-out")
+    div
+      svg(xmlns="http://www.w3.org/2000/svg", class="stroke-current flex-shrink-0 h-6 w-6", fill="none", viewBox="0 0 24 24")
+        path(stroke-linecap="round", stroke-linejoin="round", stroke-width="2", d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z")
+          span 입력한 정보를 다시 확인하여 주세요!
+
+  div(class="hero min-h-screen bg-base-200")
+    div(class="hero-content gap-32 flex-col lg:flex-row-reverse w-2/3")
+      block ID
+      div(class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100")
+        div(class="card-body")
+          div(class="form-control")
+            label(class="label")
+              span(class="label-text") 아이디
+            input(type="text", class="input input-bordered")
+          div(class="form-control")
+            label(class="label")
+              span(class="label-text") 비밀번호
+            input(type="password", class="input input-bordered")
+            label(class="label")
+              a(href=`${url}`, class="label-text-alt link link-hover") 비밀번호를 잊으셨나요?
+          div(class="form-control mt-6")
+            button(class="btn btn-primary") 로그인

@@ -8,12 +8,13 @@ document.querySelector("#cust_key").setAttribute("value", cust_key);
 const formKYC = document.querySelector("#formKYC");
 const submitKYC = document.querySelector("#submitKYC");
 
-const passedOrNot = (e) => {
+const passedOrNot = async (e) => {
   if (document.querySelector("#understanding_negative").checked) {
     formKYC.setAttribute("method", "get");
     formKYC.setAttribute("action", "/notAllowed");
   } else {
-    e.preventDefault();
+    formKYC.setAttribute("method", "get");
+    formKYC.setAttribute("action", "/cert");
 
     const phone_no = document.querySelector("#cust_key").value;
 
@@ -28,23 +29,24 @@ const passedOrNot = (e) => {
     });
 
     const JSONData = {
-      name: "적합성검토",
-      input: "적합성검토",
+      name: "validation",
+      input: "validation",
       output: JSON.stringify(passedData),
     };
 
-    console.log(JSONData);
-
-    axios
-      .post("https://stg.benefitplus.kr/api/loan_recpetion", JSONData)
+    await axios
+      .post("https://benefitplus.kr/api/loan_recpetion", JSONData)
       .then((res) => {
         if (res.data.success) {
-          window.location.href = "/cert";
+          formKYC.setAttribute("method", "get");
+          formKYC.setAttribute("action", "/cert");
         } else {
-          window.location.href = "/kyc";
+          document.alert("서버가 응답하지 않습니다.");
+          formKYC.setAttribute("method", "get");
+          formKYC.setAttribute("action", "/kyc");
         }
       });
   }
 };
 
-submitKYC.addEventListener("click", passedOrNot);
+formKYC.addEventListener("submit", passedOrNot);

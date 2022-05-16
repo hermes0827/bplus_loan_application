@@ -2,6 +2,14 @@ extends ./templates/base.pug
 
 block content
 
+  div#confirmModal(class="hidden alert alert-success shadow-lg z-10 absolute justify-center ease-in-out")
+    div
+      svg(xmlns="http://www.w3.org/2000/svg", class="stroke-current flex-shrink-0 h-6 w-6", fill="none", viewBox="0 0 24 24")
+        path(stroke-linecap="round", stroke-linejoin="round", stroke-width="2", d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z")
+          span 제출 성공! 
+          button(class="btn btn-outline btn-sm")
+            a(href='/kyc') 다음 페이지
+
 
   div(id='errorModal' class="alert hidden alert-error shadow-lg z-10 absolute justify-center ease-in-out")
     div
@@ -17,7 +25,6 @@ block content
         p 핸드폰 또는 신용카드 인증이 필요하므로 준비해주세요.
         p(class="font-bold") 여러 번 조회해도 신용점수에 영향을 주지 않습니다.
         p(class="py-6 text-xs") 한도조회결과는 영업시간 중 한 시간 이내 / 영업시간 이외 익일 오전 통보됩니다.
-        a(class="link link-primary hidden" id='nextPage' href='/kyc') I&apos;m a simple link
 
       div(class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-20")
         div(class="card-body")
@@ -39,7 +46,7 @@ block content
               div(class='flex justify-around')
                 input(id='res_no1' type="text", placeholder="000000", class="input input-bordered w-2/5" maxlength="6")
                 span(class='w-1/5 text-center') -
-                input(id='res_no2' type="text", placeholder="XXXXXXX", class="input input-bordered w-2/5" maxlength="7")
+                input(id='res_no2' type="password", placeholder="XXXXXXX", class="input input-bordered w-2/5" maxlength="7")
             div(class="form-control")
               label(class="label")
                 span(class="label-text") 사업자번호

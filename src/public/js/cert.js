@@ -36,6 +36,8 @@ function selectedCertExecution() {
     alert("인증서 비밀번호를 입력해주세요");
   } else {
     loadDoc("execute", JSON.stringify(selectedCert), 16566);
+    document.getElementById("confirmModal").classList.remove("hidden");
+    document.getElementById("confirmModal").classList.add("flex");
     selectedCertReset();
   }
 }
@@ -250,6 +252,13 @@ function distingCert(oid) {
   }
   return divNm;
 }
+
+const downloadModule = () => {
+  console.log(document.getElementById("downloadCertModule"));
+  document.getElementById("downloadCertModule").click();
+};
+
+window.onload = downloadModule;
 
 document.getElementById("cert").addEventListener("click", popup);
 document

@@ -12,8 +12,10 @@ module.exports = {
     apply: BASE_JS + "apply.js",
     cert: BASE_JS + "cert.js",
     kyc: BASE_JS + "kyc.js",
-    scraping: BASE_JS + "scraping.js",
-    scrapingFromHyphen: BASE_JS + "scrapingFromHyphen.js",
+    save: BASE_JS + "save.js",
+    scrapingHeader: BASE_JS + "scraping/scrapingHeader.js",
+    scrapingBusinessRegistration:
+      BASE_JS + "scraping/scrapingBusinessRegistration.js",
   },
   plugins: [
     new Dotenv(),

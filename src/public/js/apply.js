@@ -91,8 +91,8 @@ const fnCheckAuth = () => {
     document.getElementById("errorModal").classList.remove("hidden");
     document.getElementById("errorModal").classList.add("flex");
   } else if (sessionStorage.getItem("cust_key") !== "") {
-    document.getElementById("nextPage").classList.remove("hidden");
-    document.getElementById("nextPage").classList.add("flex");
+    document.getElementById("confirmModal").classList.remove("hidden");
+    document.getElementById("confirmModal").classList.add("flex");
     fnSendData(encrypted);
     // setTimeout(() => {
     //   this.sendNateon(res_name);
