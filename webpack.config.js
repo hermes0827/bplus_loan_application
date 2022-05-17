@@ -1,4 +1,5 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -24,6 +25,9 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: "css/styles.css",
+    }),
+    new HtmlWebpackPlugin({
+      favicon: "./src/logo.png",
     }),
   ],
   output: {
