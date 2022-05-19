@@ -11,6 +11,7 @@ module.exports = {
     main: BASE_JS + "main.js",
     home: BASE_JS + "home.js",
     apply: BASE_JS + "apply.js",
+    notAllowed: BASE_JS + "notAllowed.js",
     cert: BASE_JS + "cert.js",
     kyc: BASE_JS + "kyc.js",
     save: BASE_JS + "save.js",
