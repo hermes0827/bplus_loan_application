@@ -1,15 +1,11 @@
 import axios from "axios";
 import header from "./scrapingHeader";
 
-const cardSales = () => {
-  const presentYear = new Date().getFullYear();
-
+const coupangEats = () => {
   const input = {
     userId: "",
     userPw: "",
-    fromDate: presentYear - 1,
-    toDate: presentYear,
-    detailYn: "Y",
+    storeId: "",
   };
 
   axios({
@@ -21,7 +17,7 @@ const cardSales = () => {
     .then((res) => {
       console.log(res);
       if (res.data.out.errYn === "Y") {
-        return alert("카드매출 조회에 실패하였습니다.");
+        return alert("쿠팡이츠 거래내역 조회에 실패하였습니다다.");
       } else {
         res.data.phone_no = sessionStorage.getItem("cust_key");
         return res.data;
@@ -39,6 +35,5 @@ const cardSales = () => {
       });
     });
 };
-export default cardSales;
 
-// 사업자등록증명
+export default coupangEats;

@@ -1,11 +1,18 @@
-extends ./templates/moreInfo.pug
+extends ./templates/base
+include ./mixins/moreInfo
 
-block ID
-  div(class="text-center lg:text-left")
-    h1(class="text-3xl font-bold") 추가 정보 제공
-    p(class="py-6") 여신금융협회 카드매출정보 스크래핑을 진행합니다.
-    ul(class="steps steps-vertical")
-      li(class="step step-secondary") 여신금융협회 정보 제공
-      li(class="step") 배달의민족 정보 제공
-      li(class="step") 쿠팡이츠 정보 제공
+block content
+  div(class="hero min-h-screen bg-base-200")
+    div(class="hero-content gap-16 flex-col lg:flex-row-reverse w-2/3")
+      div(class="text-center lg:text-left")
+        h1(class="text-3xl font-bold") 추가 정보 제공
+        p(class="py-6") 여신금융협회 카드매출정보 스크래핑을 진행합니다.
+        ul(class="steps steps-vertical")
+          li(class="step step-secondary") 여신금융협회 정보 제공
+          li(class="step") 배달의민족 정보 제공 
+          li(class="step") 쿠팡이츠 정보 제공 
+      +loginForm('/baemin')  
 
+
+block scripts
+  script(src="/static/js/scrapingValidator.js", type='module')

@@ -16,6 +16,10 @@ module.exports = {
     kyc: BASE_JS + "kyc.js",
     save: BASE_JS + "save.js",
     scrapingHeader: BASE_JS + "scraping/scrapingHeader.js",
+    scrapingValidator: BASE_JS + "scraping/scrapingValidator",
+    scrapingCardSales: BASE_JS + "scraping/scrapingCardSales",
+    scrapingBaemin: BASE_JS + "scraping/scrapingBaemin",
+    scrapingCoupangEats: BASE_JS + "scraping/scrapingCoupangEats",
     scrapingBusinessRegistration:
       BASE_JS + "scraping/scrapingBusinessRegistration.js",
   },
