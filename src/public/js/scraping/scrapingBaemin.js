@@ -19,12 +19,15 @@ const baemin = () => {
     data: input,
   })
     .then((res) => {
-      console.log(res);
-      if (res.data.out.errYn === "Y") {
-        return alert("배달의민족 거래내역 조회에 실패하였습니다.");
-      } else {
-        res.data.phone_no = sessionStorage.getItem("cust_key");
-        return res.data;
+      try {
+        if (res.data.out.errYn === "Y") {
+          return alert("배달의민족 거래내역 조회에 실패하였습니다.");
+        } else {
+          res.data.phone_no = sessionStorage.getItem("cust_key");
+          return res.data;
+        }
+      } catch (e) {
+        alert("배달의민족 거래내역 조회에 실패하였습니다.");
       }
     })
     .then((res) => {

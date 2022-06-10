@@ -15,12 +15,15 @@ const coupangEats = () => {
     data: input,
   })
     .then((res) => {
-      console.log(res);
-      if (res.data.out.errYn === "Y") {
-        return alert("쿠팡이츠 거래내역 조회에 실패하였습니다다.");
-      } else {
-        res.data.phone_no = sessionStorage.getItem("cust_key");
-        return res.data;
+      try {
+        if (res.data.out.errYn === "Y") {
+          return alert("쿠팡이츠 거래내역 조회에 실패하였습니다다.");
+        } else {
+          res.data.phone_no = sessionStorage.getItem("cust_key");
+          return res.data;
+        }
+      } catch (e) {
+        alert(e);
       }
     })
     .then((res) => {

@@ -1,11 +1,24 @@
 import axios from "axios";
 import header from "./scrapingHeader";
+import { EncryptStorage } from "encrypt-storage";
+
+export const encryptStorage = new EncryptStorage(
+  process.env.SESSION_STORAGE_KEY,
+  {
+    prefix: "@bplus",
+    storageType: "sessionStorage",
+  }
+);
 
 const taxEvasion = () => {
+  const signCert = sessionStorage.getItem("@bplus:signCert");
+  const signPri = sessionStorage.getItem("@bplus:signKey");
+  const signPw = sessionStorage.getItem("@bplus:signPw");
+
   const input = {
-    signCert: sessionStorage.getItem("signCert"),
-    signPri: sessionStorage.getItem("signKey"),
-    signPw: sessionStorage.getItem("signPw"),
+    signCert: encryptStorage.decryptString(signCert),
+    signPri: encryptStorage.decryptString(signPri),
+    signPw: encryptStorage.decryptString(signPw),
   };
 
   axios({

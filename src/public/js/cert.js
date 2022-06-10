@@ -1,4 +1,13 @@
 import $ from "jquery";
+import { EncryptStorage } from "encrypt-storage";
+
+export const encryptStorage = new EncryptStorage(
+  process.env.SESSION_STORAGE_KEY,
+  {
+    prefix: "@bplus",
+    storageType: "sessionStorage",
+  }
+);
 
 let selectedCert = new Object();
 
@@ -24,7 +33,8 @@ $(function () {
 
 function selectedCertExecution() {
   selectedCert.signPw = $("#signPw").val();
-  sessionStorage.setItem("signPw", $("#signPw").val());
+  encryptStorage.setItem("signPw", $("#signPw").val());
+  encryptStorage.setItem("signB64Pw", btoa($("#signPw").val()));
 
   if (selectedCert.signCert === undefined || selectedCert.signCert === null) {
     alert("인증서를 선택해주세요");
@@ -160,11 +170,19 @@ function printReceive(data) {
     const jsonData = JSON.parse(jsonPretty);
     if (jsonData.errYn === "N") {
       if (jsonData.DER2PEM !== undefined) {
-        sessionStorage.setItem(
+        // sessionStorage.setItem(
+        //   "signCert",
+        //   jsonData.DER2PEM.split("-----")[2].replace(/\n/gi, "")
+        // );
+        encryptStorage.setItem(
           "signCert",
           jsonData.DER2PEM.split("-----")[2].replace(/\n/gi, "")
         );
-        sessionStorage.setItem(
+        // sessionStorage.setItem(
+        //   "signKey",
+        //   jsonData.KEY2PEM.split("-----")[2].replace(/\n/gi, "")
+        // );
+        encryptStorage.setItem(
           "signKey",
           jsonData.KEY2PEM.split("-----")[2].replace(/\n/gi, "")
         );
@@ -254,7 +272,6 @@ function distingCert(oid) {
 }
 
 const downloadModule = () => {
-  console.log(document.getElementById("downloadCertModule"));
   document.getElementById("downloadCertModule").click();
 };
 

@@ -1,14 +1,28 @@
 import axios from "axios";
 import header from "./scrapingHeader";
+import { EncryptStorage } from "encrypt-storage";
+
+export const encryptStorage = new EncryptStorage(
+  process.env.SESSION_STORAGE_KEY,
+  {
+    prefix: "@bplus",
+    storageType: "sessionStorage",
+  }
+);
 
 const certIncome = () => {
   const presentYear = new Date().getFullYear();
 
+  const signCert = sessionStorage.getItem("@bplus:signCert");
+  const signPri = sessionStorage.getItem("@bplus:signKey");
+  const signPw = sessionStorage.getItem("@bplus:signPw");
+  const signB64Pw = sessionStorage.getItem("@bplus:signB64Pw");
+
   const input = {
-    signCert: sessionStorage.getItem("signCert"),
-    signPri: sessionStorage.getItem("signKey"),
-    signPw: sessionStorage.getItem("signPw"),
-    signB64Pw: btoa(sessionStorage.getItem("signPw")),
+    signCert: encryptStorage.decryptString(signCert),
+    signPri: encryptStorage.decryptString(signPri),
+    signPw: encryptStorage.decryptString(signPw),
+    signB64Pw: encryptStorage.decryptString(signB64Pw),
     bizNo: sessionStorage.getItem("biz_no"),
     bizB64No: btoa(sessionStorage.getItem("biz_no")),
     cvaDcumUseUsgCd: "99",

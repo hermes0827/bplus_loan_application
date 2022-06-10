@@ -1,4 +1,13 @@
 import CryptoJS from "crypto-js";
+import { EncryptStorage } from "encrypt-storage";
+
+export const encryptStorage = new EncryptStorage(
+  process.env.SESSION_STORAGE_KEY,
+  {
+    prefix: "@bplus",
+    storageType: "sessionStorage",
+  }
+);
 
 const button = document.getElementById("sendNice");
 
@@ -9,7 +18,7 @@ document.getElementById("res_no1").onchange = (e) => {
   sessionStorage.setItem("res_no1", e.target.value);
 };
 document.getElementById("res_no2").onchange = (e) => {
-  sessionStorage.setItem("res_no2", e.target.value);
+  encryptStorage.setItem("res_no2", e.target.value);
 };
 document.getElementById("cust_key").onchange = (e) => {
   sessionStorage.setItem("cust_key", e.target.value);
@@ -35,7 +44,7 @@ const fnCheckAuth = () => {
   const login_id = process.env.NICE_LOGIN_ID;
   const passwd = process.env.NICE_USER_PW;
   const res_no1 = sessionStorage.getItem("res_no1");
-  const res_no2 = sessionStorage.getItem("res_no2");
+  const res_no2 = sessionStorage.getItem("@bplus:res_no2");
   const res_name = sessionStorage.getItem("res_name");
   const cust_key = sessionStorage.getItem("cust_key");
   const biz_no = sessionStorage.getItem("biz_no");
@@ -45,8 +54,11 @@ const fnCheckAuth = () => {
   const stKey = process.env.NICE_ENCODING_KEY;
   const stIv = process.env.NICE_IV_KEY;
 
-  const res_no = res_no1 + res_no2;
-  sessionStorage.setItem("res_no", res_no);
+  const decrypted_res_no2 = encryptStorage.decryptString(res_no2);
+
+  const res_no = res_no1 + decrypted_res_no2;
+
+  encryptStorage.setItem("res_no", res_no);
 
   const sendJsonData =
     '{"request" : [{  "passwd" : "' +
@@ -54,7 +66,7 @@ const fnCheckAuth = () => {
     '", "res_no1" : "' +
     res_no1 +
     '", "res_no2" : "' +
-    res_no2 +
+    decrypted_res_no2 +
     '", "res_name" : "' +
     res_name +
     '", "cust_key" : "' +

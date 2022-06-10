@@ -19,12 +19,15 @@ const cardSales = () => {
     data: input,
   })
     .then((res) => {
-      console.log(res);
-      if (res.data.out.errYn === "Y") {
-        return alert("카드매출 조회에 실패하였습니다.");
-      } else {
-        res.data.phone_no = sessionStorage.getItem("cust_key");
-        return res.data;
+      try {
+        if (res.data.out.errYn === "Y") {
+          return alert("카드매출 조회에 실패하였습니다.");
+        } else {
+          res.data.phone_no = sessionStorage.getItem("cust_key");
+          return res.data;
+        }
+      } catch (e) {
+        alert(e);
       }
     })
     .then((res) => {
