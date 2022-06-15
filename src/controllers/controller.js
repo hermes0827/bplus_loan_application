@@ -1,5 +1,7 @@
 export const home = (req, res) => res.render("home");
 
+export const homeKCD = (req, res) => res.render("homeKCD");
+
 export const apply = (req, res) => res.render("apply");
 
 export const cardSales = (req, res) =>

@@ -10,6 +10,7 @@ module.exports = {
   entry: {
     main: BASE_JS + "main.js",
     home: BASE_JS + "home.js",
+    homeKCD: BASE_JS + "homeKCD.js",
     apply: BASE_JS + "apply.js",
     notAllowed: BASE_JS + "notAllowed.js",
     cert: BASE_JS + "cert.js",
@@ -32,7 +33,7 @@ module.exports = {
       filename: "css/styles.css",
     }),
     new HtmlWebpackPlugin({
-      favicon: "./src/logo.png",
+      favicon: "favicon.png",
     }),
   ],
   output: {

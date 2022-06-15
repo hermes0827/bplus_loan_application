@@ -1,7 +1,7 @@
 import "regenerator-runtime";
 import app from "./server";
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 
 const handleListening = () =>
   console.log(`✅ Server listenting on http://localhost:${PORT} 🚀`);

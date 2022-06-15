@@ -17,16 +17,18 @@ block content
         path(stroke-linecap="round", stroke-linejoin="round", stroke-width="2", d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z")
           span 입력한 정보를 다시 확인하여 주세요!
 
-  div(class="hero min-h-screen bg-base-200")
-    div(class="hero-content flex-col lg:flex-row-reverse")
+  div(class="hero flex justify-center min-h-screen bg-base-200")
+    div(class="hero-content flex-col lg:flex-row-reverse w-5/6")
       div(class="text-center lg:text-left")
-        h1(class="text-2xl font-bold") 한도 조회를 위해 개인신용정보를 송부합니다.
-        p(class="py-6") NICE평가정보 개인신용점수 및 한도 평가를 위한 정보를 비플러스로 송부합니다.
-        p 핸드폰 또는 신용카드 인증이 필요하므로 준비해주세요.
-        p(class="font-bold") 여러 번 조회해도 신용점수에 영향을 주지 않습니다.
-        p(class="py-6 text-xs") 한도조회결과는 영업시간 중 한 시간 이내 / 영업시간 이외 익일 오전 통보됩니다.
+        h1(class="text-2xl font-bold pb-6") 한도 조회를 위해 개인신용정보를 송부합니다.
+        p NICE평가정보 개인신용점수 및 
+        p(class="pb-6") 한도 평가를 위한 정보를 비플러스로 송부합니다.
+        p(class="pb-6") 핸드폰 또는 신용카드 인증이 필요하므로 준비해주세요.
+        p(class="pb-6 font-bold") 여러 번 조회해도 신용점수에 영향을 주지 않습니다.
+        p(class="text-xs") 한도조회결과는 영업시간 중 한 시간 이내 
+        p(class="pb-6 text-xs") / 영업시간 이외 익일 오전 통보됩니다.
 
-      div(class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-20")
+      div(class="card flex-shrink-0 max-w-sm shadow-2xl bg-base-100 mx-20 items-center")
         div(class="card-body")
           form(name="form" method='post')
             div(class="form-control")
