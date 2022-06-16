@@ -28,6 +28,8 @@ block content
         p(class="text-xs") 한도조회결과는 영업시간 중 한 시간 이내 
         p(class="pb-6 text-xs") / 영업시간 이외 익일 오전 통보됩니다.
 
+
+
       div(class="card flex-shrink-0 max-w-sm shadow-2xl bg-base-100 mx-20 items-center")
         div(class="card-body")
           form(name="form" method='post')
@@ -61,6 +63,14 @@ block content
               label(class="label")
                 span(class="label-text") 이메일
               input(id='email' type="email", placeholder="example@example.com", class="input input-bordered")
+            div(class="form-control pt-4")
+              label(class="cursor-pointer label")
+                span(class="label-text") 
+                  |
+                  a(href='https://benefitplus.kr/privacy' target='blank') 
+                    b 개인정보이용/제공 동의
+                    | (필수)
+                input(type="checkbox", id='privacyCheckbox' class="checkbox checkbox-accent")
             div(class="form-control mt-6")
               a(class="btn btn-primary" id="sendNice") 제출하기
             

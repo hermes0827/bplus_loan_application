@@ -1,4 +1,6 @@
 import CryptoJS from "crypto-js";
+import qs from "qs";
+import axios from "axios";
 import { EncryptStorage } from "encrypt-storage";
 
 export const encryptStorage = new EncryptStorage(
@@ -10,6 +12,7 @@ export const encryptStorage = new EncryptStorage(
 );
 
 const button = document.getElementById("sendNice");
+const checkbox = document.getElementById("privacyCheckbox");
 
 document.getElementById("res_name").onchange = (e) => {
   sessionStorage.setItem("res_name", e.target.value);
@@ -25,6 +28,30 @@ document.getElementById("cust_key").onchange = (e) => {
 };
 document.getElementById("biz_no").onchange = (e) => {
   sessionStorage.setItem("biz_no", e.target.value);
+};
+
+const sendNateon = (n) => {
+  const data = {
+    content: `신용정보가 송부되었습니다(성함 : ${n}). 담당자께서는 확인을 부탁드립니다.`,
+  };
+
+  const url =
+    "https://teamroom.nate.com/api/webhook/46a81c1f/jHYjXRHCN5yLWo3ORzSqzKhy";
+
+  const options = {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    data: qs.stringify(data),
+    url: url,
+  };
+
+  axios(options)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 };
 
 const fnSendData = (sJsonText) => {
@@ -97,43 +124,21 @@ const fnCheckAuth = () => {
     document.getElementById("res_no1").value === "" ||
     document.getElementById("res_no2").value === "" ||
     document.getElementById("cust_key").value === "" ||
-    document.getElementById("biz_no").value === ""
+    document.getElementById("biz_no").value === "" ||
+    checkbox.checked === false
   ) {
-    document.form.addEventListener("click", (e) => e.preventDefault());
+    button.addEventListener("click", (e) => e.preventDefault());
     document.getElementById("errorModal").classList.remove("hidden");
     document.getElementById("errorModal").classList.add("flex");
   } else if (sessionStorage.getItem("cust_key") !== "") {
     document.getElementById("confirmModal").classList.remove("hidden");
     document.getElementById("confirmModal").classList.add("flex");
     fnSendData(encrypted);
-    // setTimeout(() => {
-    //   this.sendNateon(res_name);
-    // }, 3000);
+    setTimeout(() => {
+      sendNateon(res_name);
+    }, 3000);
   }
 };
-
-// const sendNateon = (n) => {
-//   const data = {
-//     content: `신용정보가 송부되었습니다(성함 : ${n}). 담당자께서는 확인을 부탁드립니다.`,
-//   };
-
-//   const url = "/nateonapi";
-
-//   const options = {
-//     method: "POST",
-//     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-//     data: qs.stringify(data),
-//     url: url,
-//   };
-
-//   axios(options)
-//     .then(function (response) {
-//       console.log(response);
-//     })
-//     .catch(function (error) {
-//       console.log(error);
-//     });
-// };
 
 const errorModalHandler = () => {
   document.getElementById("errorModal").classList.remove("flex");
