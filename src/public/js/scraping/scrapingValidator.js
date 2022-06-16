@@ -1,7 +1,21 @@
 import axios from "axios";
 import header from "./scrapingHeader";
+import { EncryptStorage } from "encrypt-storage";
 
-export const cardSalesValidator = () => {
+export const encryptStorage = new EncryptStorage(
+  process.env.SESSION_STORAGE_KEY,
+  {
+    prefix: "@bplus",
+    storageType: "sessionStorage",
+  }
+);
+
+const showConfirmModal = () => {
+  document.getElementById("confirmModal").classList.remove("hidden");
+  document.getElementById("confirmModal").classList.add("flex");
+};
+
+const cardSalesValidator = () => {
   const presentYear = new Date().getFullYear();
 
   const ID = document.querySelector("#ID").value;
@@ -10,8 +24,6 @@ export const cardSalesValidator = () => {
   const input = {
     userId: ID,
     userPw: password,
-    fromDate: presentYear - 1,
-    toDate: presentYear,
   };
 
   axios({
@@ -20,22 +32,23 @@ export const cardSalesValidator = () => {
     headers: header,
     data: input,
   }).then((res) => {
+    console.log(res);
     try {
-      if (res.data.data.length === 0) {
-        alert(
-          "해당 계정 정보가 없습니다. ID/PW 확인 또는 여신금융협회 회원가입을 해주세요."
-        );
+      if (res.data.errYn === "N") {
+        alert("로그인 성공");
+        sessionStorage.setItem("cardSalesID", ID);
+        encryptStorage.setItem("cardSalesPW", password);
+        showConfirmModal();
+      } else {
+        throw e;
       }
     } catch (e) {
       alert("해당하는 정보를 찾을 수 없습니다.");
     }
   });
-
-  sessionStorage.setItem("cardSalesID", ID);
-  sessionStorage.setItem("cardSalesPW", password);
 };
 
-export const baeminValidator = () => {
+const baeminValidator = () => {
   const ID = document.querySelector("#ID").value;
   const password = document.querySelector("#password").value;
 
@@ -52,19 +65,20 @@ export const baeminValidator = () => {
     data: input,
   }).then((res) => {
     try {
-      if (res.data.errYn === "Y") {
-        alert(res.data.errMsg);
+      if (res.data.errYn === "N") {
+        alert("로그인 성공");
+        sessionStorage.setItem("baeminID", ID);
+        encryptStorage.setItem("baeminPW", password);
+      } else {
+        throw e;
       }
     } catch (e) {
-      alert(e);
+      alert("해당하는 정보를 찾을 수 없습니다.");
     }
   });
-
-  sessionStorage.setItem("baeminID", ID);
-  sessionStorage.setItem("baeminPW", password);
 };
 
-export const coupangEatsValidator = () => {
+const coupangEatsValidator = () => {
   const ID = document.querySelector("#ID").value;
   const password = document.querySelector("#password").value;
 
@@ -81,14 +95,26 @@ export const coupangEatsValidator = () => {
     data: input,
   }).then((res) => {
     try {
-      if (res.data.errYn === "Y") {
-        alert(res.data.errMsg);
+      if (res.data.errYn === "N") {
+        alert("로그인 성공");
+        sessionStorage.setItem("coupangEatsID", ID);
+        encryptStorage.setItem("coupangEatsPW", password);
+      } else {
+        throw e;
       }
     } catch (e) {
-      alert(e);
+      alert("해당하는 정보를 찾을 수 없습니다.");
     }
   });
-
-  sessionStorage.setItem("coupangEatsID", ID);
-  sessionStorage.setItem("coupangEatsPW", password);
 };
+
+if (document.getElementById("cardSales") !== null) {
+  const cardSales = document.getElementById("cardSales");
+  cardSales.addEventListener("click", cardSalesValidator);
+} else if (document.getElementById("baemin") !== null) {
+  const baemin = document.getElementById("baemin");
+  baemin.addEventListener("click", baeminValidator);
+} else if (document.getElementById("coupangEats") !== null) {
+  const coupangEats = document.getElementById("coupangEats");
+  coupangEats.addEventListener("click", coupangEatsValidator);
+}

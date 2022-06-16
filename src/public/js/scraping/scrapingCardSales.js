@@ -2,13 +2,27 @@ import axios from "axios";
 import header from "./scrapingHeader";
 
 const cardSales = () => {
-  const presentYear = new Date().getFullYear();
+  Date.prototype.yyyymm = function () {
+    let mm = this.getMonth(); // getMonth() is zero-based
+
+    return [this.getFullYear(), (mm > 9 ? "" : "0") + mm].join("");
+  };
+
+  Date.prototype.BeforeOneYear = function () {
+    let mm = this.getMonth() + 1; // getMonth() is zero-based
+
+    return [this.getFullYear() - 1, (mm > 9 ? "" : "0") + mm].join("");
+  };
+
+  const date = new Date();
+  date.yyyymm();
+  date.BeforeOneYear();
 
   const input = {
     userId: "",
     userPw: "",
-    fromDate: presentYear - 1,
-    toDate: presentYear,
+    fromDate: BeforeOneYear(),
+    toDate: date.yyyymm(),
     detailYn: "Y",
   };
 

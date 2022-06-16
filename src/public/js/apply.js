@@ -84,8 +84,10 @@ const fnCheckAuth = () => {
   const decrypted_res_no2 = encryptStorage.decryptString(res_no2);
 
   const res_no = res_no1 + decrypted_res_no2;
+  const B64res_no = btoa(res_no);
 
   encryptStorage.setItem("res_no", res_no);
+  encryptStorage.setItem("B64res_no", B64res_no);
 
   const sendJsonData =
     '{"request" : [{  "passwd" : "' +

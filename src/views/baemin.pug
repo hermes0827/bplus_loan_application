@@ -1,7 +1,9 @@
 extends ./templates/base
 include ./mixins/moreInfo
+include ./mixins/nextStep
 
 block content
+  +nextStep('/coupangeats')
   div(class="hero min-h-screen bg-base-200")
     div(class="hero-content gap-16 flex-col lg:flex-row-reverse w-2/3")
       div(class="text-center lg:text-left")
@@ -11,8 +13,7 @@ block content
           li(class="step step-secondary") 여신금융협회 정보 제공
           li(class="step step-secondary") 배달의민족 정보 제공 
           li(class="step") 쿠팡이츠 정보 제공 
-      +loginForm('/coupangeats')  
-
+      +loginForm('baemin', '/coupangeats')  
 
 block scripts
   script(src="/static/js/scrapingValidator.js", type='module')

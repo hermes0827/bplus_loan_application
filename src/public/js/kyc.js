@@ -8,6 +8,10 @@ document.querySelector("#cust_key").setAttribute("value", cust_key);
 const cust_name = sessionStorage.getItem("res_name");
 document.querySelector("#cust_name").setAttribute("value", cust_name);
 
+// type field 추가
+const type = sessionStorage.getItem("type");
+document.querySelector("#type").setAttribute("value", type);
+
 // form data to JSON
 const formKYC = document.querySelector("#formKYC");
 const submitKYC = document.querySelector("#submitKYC");
@@ -24,6 +28,8 @@ const passedOrNot = async (e) => {
 
     let passedData = {
       phone_no: phone_no,
+      name: cust_name,
+      type: type,
     };
 
     document.querySelectorAll("input").forEach((el) => {

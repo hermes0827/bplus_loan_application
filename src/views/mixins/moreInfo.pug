@@ -1,4 +1,4 @@
-mixin loginForm(passUrl)
+mixin loginForm(buttonName, passUrl)
     div(class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100")
       div(class="card-body")
         div(class="form-control")
@@ -10,7 +10,7 @@ mixin loginForm(passUrl)
             span(class="label-text") 비밀번호
           input(id='password' type="password", class="input input-bordered")
           label(class="label")
-            a(href=`${url}`, class="label-text-alt link link-hover") 계정이 없으신가요?
-        div(class="form-control mt-6")
-          button(id='loginBtn' class="btn btn-primary") 로그인
-        a(href=passUrl, class="label-text-alt link link-hover text-center") 건너뛰기
+            a(href=`${url}`, target='blank' class="label-text-alt link link-hover") 계정이 없으신가요?
+            a(href=passUrl, class="label-text-alt link link-hover text-center") 건너뛰기
+          div(class="form-control mt-6")
+            button(id=`${buttonName}` class="btn btn-primary") 로그인

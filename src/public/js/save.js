@@ -1,5 +1,6 @@
 import businessRegistration from "./scraping/scrapingBusinessRegistration";
 import taxEvasion from "./scraping/scrapingTaxEvasion";
+import localTaxEvasion from "./scraping/scrapingLocalTaxEvasion";
 import certIncome from "./scraping/scrapingCertIncome";
 import certVAT from "./scraping/scrapingCertVAT";
 import cardSales from "./scraping/scrapingCardSales";
@@ -15,6 +16,7 @@ const showConfirmModal = () => {
 
 businessRegistration();
 taxEvasion();
+localTaxEvasion();
 certIncome();
 certVAT();
 cardSales();

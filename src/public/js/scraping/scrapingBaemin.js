@@ -2,14 +2,11 @@ import axios from "axios";
 import header from "./scrapingHeader";
 
 const baemin = () => {
-  const presentYear = new Date().getFullYear();
-
   const input = {
     userId: "",
     userPw: "",
-    fromDate: presentYear - 1,
-    toDate: presentYear,
-    detailYn: "Y",
+    dateFrom: "",
+    dateTo: "",
   };
 
   axios({

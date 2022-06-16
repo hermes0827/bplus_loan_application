@@ -5,7 +5,8 @@ const coupangEats = () => {
   const input = {
     userId: "",
     userPw: "",
-    storeId: "",
+    dateFrom: "",
+    dateTo: "",
   };
 
   axios({
