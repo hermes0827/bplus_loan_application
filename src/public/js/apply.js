@@ -135,7 +135,7 @@ const fnCheckAuth = () => {
     document.getElementById("errorModal").classList.add("fixed");
   } else if (sessionStorage.getItem("cust_key") !== "") {
     document.getElementById("confirmModal").classList.remove("hidden");
-    document.getElementById("errorModal").classList.remove("absolute");
+    document.getElementById("confirmModal").classList.remove("absolute");
     document.getElementById("confirmModal").classList.add("fixed");
     fnSendData(encrypted);
     setTimeout(() => {
