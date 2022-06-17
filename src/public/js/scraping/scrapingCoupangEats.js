@@ -58,7 +58,7 @@ const coupangEats = () => {
         url: "https://benefitplus.kr/api/loan_recpetion",
         method: "post",
         data: {
-          name: "coupangEatsSales",
+          name: "배달매출",
           input: "",
           output: JSON.stringify(res),
         },

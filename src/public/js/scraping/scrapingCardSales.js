@@ -49,7 +49,7 @@ const cardSales = () => {
         url: "https://benefitplus.kr/api/loan_recpetion",
         method: "post",
         data: {
-          name: "cardSales",
+          name: "카드매출",
           input: "",
           output: JSON.stringify(res),
         },

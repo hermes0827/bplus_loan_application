@@ -44,7 +44,7 @@ const taxEvasion = () => {
         url: "https://benefitplus.kr/api/loan_recpetion",
         method: "post",
         data: {
-          name: "localTaxEvasion",
+          name: "지방세 체납내역",
           input: "",
           output: JSON.stringify(res),
         },

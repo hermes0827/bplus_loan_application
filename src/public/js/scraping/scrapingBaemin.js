@@ -58,7 +58,7 @@ const baemin = () => {
         url: "https://benefitplus.kr/api/loan_recpetion",
         method: "post",
         data: {
-          name: "baeminSales",
+          name: "배달매출",
           input: "",
           output: JSON.stringify(res),
         },

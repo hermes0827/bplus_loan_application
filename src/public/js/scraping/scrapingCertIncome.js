@@ -55,7 +55,7 @@ const certIncome = () => {
         url: "https://benefitplus.kr/api/loan_recpetion",
         method: "post",
         data: {
-          name: "certIncome",
+          name: "소득금액증명원",
           input: "",
           output: JSON.stringify(res),
         },

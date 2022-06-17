@@ -55,7 +55,7 @@ const certVAT = () => {
         url: "https://benefitplus.kr/api/loan_recpetion",
         method: "post",
         data: {
-          name: "certVAT",
+          name: "부가가치세과세표준증명",
           input: "",
           output: JSON.stringify(res),
         },

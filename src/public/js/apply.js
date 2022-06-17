@@ -30,9 +30,9 @@ document.getElementById("biz_no").onchange = (e) => {
   sessionStorage.setItem("biz_no", e.target.value);
 };
 
-const sendNateon = (n) => {
+const sendNateon = (name, phone_no) => {
   const data = {
-    content: `신용정보가 송부되었습니다(성함 : ${n}). 담당자께서는 확인을 부탁드립니다.`,
+    content: `신용정보가 송부되었습니다(성함 : ${name} / 연락처: ${phone_no}). 담당자께서는 확인을 부탁드립니다.`,
   };
 
   const url =
@@ -131,19 +131,21 @@ const fnCheckAuth = () => {
   ) {
     button.addEventListener("click", (e) => e.preventDefault());
     document.getElementById("errorModal").classList.remove("hidden");
-    document.getElementById("errorModal").classList.add("flex");
+    document.getElementById("errorModal").classList.remove("absolute");
+    document.getElementById("errorModal").classList.add("fixed");
   } else if (sessionStorage.getItem("cust_key") !== "") {
     document.getElementById("confirmModal").classList.remove("hidden");
-    document.getElementById("confirmModal").classList.add("flex");
+    document.getElementById("errorModal").classList.remove("absolute");
+    document.getElementById("confirmModal").classList.add("fixed");
     fnSendData(encrypted);
     setTimeout(() => {
-      sendNateon(res_name);
+      sendNateon(res_name, cust_key);
     }, 3000);
   }
 };
 
 const errorModalHandler = () => {
-  document.getElementById("errorModal").classList.remove("flex");
+  document.getElementById("errorModal").classList.remove("fixed");
   document.getElementById("errorModal").classList.add("hidden");
 };
 

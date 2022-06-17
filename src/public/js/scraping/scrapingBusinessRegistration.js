@@ -55,7 +55,7 @@ const businessRegistration = () => {
         url: "https://benefitplus.kr/api/loan_recpetion",
         method: "post",
         data: {
-          name: "businessRegistration",
+          name: "사업자등록증명",
           input: "",
           output: JSON.stringify(res),
         },
@@ -64,5 +64,3 @@ const businessRegistration = () => {
 };
 
 export default businessRegistration;
-
-// 사업자등록증명
