@@ -33,6 +33,7 @@ module.exports = {
       filename: "css/styles.css",
     }),
     new HtmlWebpackPlugin({
+      template: "./src/views/templates/base.pug",
       favicon: "favicon.png",
     }),
   ],

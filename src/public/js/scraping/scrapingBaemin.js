@@ -2,11 +2,37 @@ import axios from "axios";
 import header from "./scrapingHeader";
 
 const baemin = () => {
+  Date.prototype.yyyymmdd = function () {
+    var mm = this.getMonth() + 1; // getMonth() is zero-based
+    var dd = this.getDate();
+
+    return [
+      this.getFullYear(),
+      (mm > 9 ? "" : "0") + mm,
+      (dd > 9 ? "" : "0") + dd,
+    ].join("");
+  };
+
+  Date.prototype.BeforeOneYear = function () {
+    var mm = this.getMonth() + 1; // getMonth() is zero-based
+    var dd = this.getDate();
+
+    return [
+      this.getFullYear(),
+      (mm > 9 ? "" : "0") + mm,
+      (dd > 9 ? "" : "0") + dd,
+    ].join("");
+  };
+
+  const date = new Date();
+  const userId = sessionStorage.getItem("baeminID");
+  const userPw = sessionStorage.getItem("@bplus:baeminPW");
+
   const input = {
-    userId: "",
-    userPw: "",
-    dateFrom: "",
-    dateTo: "",
+    userId: userId,
+    userPw: userPw,
+    dateFrom: date.BeforeOneYear(),
+    dateTo: date.yyyymmdd(),
   };
 
   axios({
@@ -32,7 +58,7 @@ const baemin = () => {
         url: "https://benefitplus.kr/api/loan_recpetion",
         method: "post",
         data: {
-          name: "certIncome",
+          name: "baeminSales",
           input: "",
           output: JSON.stringify(res),
         },

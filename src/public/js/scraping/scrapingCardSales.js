@@ -15,13 +15,13 @@ const cardSales = () => {
   };
 
   const date = new Date();
-  date.yyyymm();
-  date.BeforeOneYear();
+  const userId = sessionStorage.getItem("cardSalesID");
+  const userPw = sessionStorage.getItem("@bplus:cardSalesPW");
 
   const input = {
-    userId: "",
-    userPw: "",
-    fromDate: BeforeOneYear(),
+    userId: userId,
+    userPw: encryptStorage.decryptString(userPw),
+    fromDate: date.BeforeOneYear(),
     toDate: date.yyyymm(),
     detailYn: "Y",
   };
@@ -49,7 +49,7 @@ const cardSales = () => {
         url: "https://benefitplus.kr/api/loan_recpetion",
         method: "post",
         data: {
-          name: "certIncome",
+          name: "cardSales",
           input: "",
           output: JSON.stringify(res),
         },

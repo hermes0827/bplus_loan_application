@@ -32,9 +32,8 @@ const cardSalesValidator = () => {
     headers: header,
     data: input,
   }).then((res) => {
-    console.log(res);
     try {
-      if (res.data.errYn === "N") {
+      if (res.data.out.errYn === "N") {
         alert("로그인 성공");
         sessionStorage.setItem("cardSalesID", ID);
         encryptStorage.setItem("cardSalesPW", password);
@@ -65,7 +64,7 @@ const baeminValidator = () => {
     data: input,
   }).then((res) => {
     try {
-      if (res.data.errYn === "N") {
+      if (res.data.out.errYn === "N") {
         alert("로그인 성공");
         sessionStorage.setItem("baeminID", ID);
         encryptStorage.setItem("baeminPW", password);
@@ -95,7 +94,7 @@ const coupangEatsValidator = () => {
     data: input,
   }).then((res) => {
     try {
-      if (res.data.errYn === "N") {
+      if (res.data.out.errYn === "N") {
         alert("로그인 성공");
         sessionStorage.setItem("coupangEatsID", ID);
         encryptStorage.setItem("coupangEatsPW", password);
