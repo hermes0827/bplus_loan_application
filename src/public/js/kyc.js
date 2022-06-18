@@ -12,6 +12,9 @@ document.querySelector("#cust_name").setAttribute("value", cust_name);
 const type = sessionStorage.getItem("type");
 document.querySelector("#type").setAttribute("value", type);
 
+const email = sessionStorage.getItem("email");
+document.querySelector("#email").setAttribute("value", email);
+
 // form data to JSON
 const formKYC = document.querySelector("#formKYC");
 const submitKYC = document.querySelector("#submitKYC");
@@ -48,6 +51,7 @@ const passedOrNot = async (e) => {
       .post("https://benefitplus.kr/api/loan_recpetion", JSONData)
       .then((res) => {
         if (res.data.success) {
+          const email = sessionStorage.getItem("email");
           formKYC.setAttribute("method", "get");
           formKYC.setAttribute("action", "/cert");
         } else {

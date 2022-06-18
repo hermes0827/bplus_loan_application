@@ -35,7 +35,7 @@ document.getElementById("email").onchange = (e) => {
 
 const sendNateon = (name, phone_no) => {
   const data = {
-    content: `신용정보가 송부되었습니다(성함 : ${name} / 연락처: ${phone_no}). 담당자께서는 확인을 부탁드립니다.`,
+    content: `신용정보가 송부가 시도되었습니다.(성함 : ${name} / 연락처: ${phone_no}). 담당자께서는 확인을 부탁드립니다.`,
   };
 
   const url =
@@ -137,13 +137,11 @@ const fnCheckAuth = () => {
     document.getElementById("errorModal").classList.remove("absolute");
     document.getElementById("errorModal").classList.add("fixed");
   } else if (sessionStorage.getItem("cust_key") !== "") {
-    document.getElementById("confirmModal").classList.remove("hidden");
-    document.getElementById("confirmModal").classList.remove("absolute");
-    document.getElementById("confirmModal").classList.add("fixed");
     fnSendData(encrypted);
-    // setTimeout(() => {
-    //   sendNateon(res_name, cust_key);
-    // }, 3000);
+    window.location.href = "/kyc";
+    setTimeout(() => {
+      sendNateon(res_name, cust_key);
+    }, 3000);
   }
 };
 
