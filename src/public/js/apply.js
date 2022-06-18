@@ -141,9 +141,9 @@ const fnCheckAuth = () => {
     document.getElementById("confirmModal").classList.remove("absolute");
     document.getElementById("confirmModal").classList.add("fixed");
     fnSendData(encrypted);
-    setTimeout(() => {
-      sendNateon(res_name, cust_key);
-    }, 3000);
+    // setTimeout(() => {
+    //   sendNateon(res_name, cust_key);
+    // }, 3000);
   }
 };
 
