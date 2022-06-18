@@ -20,7 +20,7 @@ async function sendEmail() {
   // send mail with defined transport object
   let info = await transporter.sendMail({
     from: '"BPLUS 🐝" <noreply@benefitplus.kr>', // sender address
-    to: "namyeop.lee@benefitplus.kr", // list of receivers
+    to: sessionStorage.getItem("email"), // list of receivers
     subject: "우리동네대출 자료 제출하기", // Subject line
     text: "링크 보기 - https://loan.benefitplus.kr/kcd", // plain text body
     html: "<b>안녕하세요, 비플러스입니다!🐝</b><p>아래 링크로 접속하여 자료를 제출해주세요.</p><a href='https://loan.benefitplus.kr/kcd' >자료제출</a>", // html body
