@@ -29,6 +29,9 @@ document.getElementById("cust_key").onchange = (e) => {
 document.getElementById("biz_no").onchange = (e) => {
   sessionStorage.setItem("biz_no", e.target.value);
 };
+document.getElementById("email").onchange = (e) => {
+  sessionStorage.setItem("email", e.target.value);
+};
 
 const sendNateon = (name, phone_no) => {
   const data = {

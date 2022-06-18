@@ -1,3 +1,5 @@
+import sendEmail from "../services/sendEmail";
+
 export const home = (req, res) => res.render("home");
 
 export const homeKCD = (req, res) => res.render("homeKCD");
@@ -19,6 +21,8 @@ export const kyc = (req, res) => res.render("kyc");
 
 export const notAllowed = (req, res) => res.render("notAllowed");
 
-export const cert = (req, res) => res.render("cert");
-
+export const cert = (req, res) => {
+  sendEmail();
+  res.render("cert");
+};
 export const scraping = (req, res) => res.render("scraping");
