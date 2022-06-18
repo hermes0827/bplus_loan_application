@@ -22,8 +22,8 @@ async function sendEmail() {
     from: '"BPLUS 🐝" <noreply@benefitplus.kr>', // sender address
     to: sessionStorage.getItem("email"), // list of receivers
     subject: "우리동네대출 자료 제출하기", // Subject line
-    text: "링크 보기 - https://loan.benefitplus.kr/kcd", // plain text body
-    html: "<b>안녕하세요, 비플러스입니다!🐝</b><p>아래 링크로 접속하여 자료를 제출해주세요.</p><a href='https://loan.benefitplus.kr/kcd' >자료제출</a>", // html body
+    text: "링크 보기 - https://loan.benefitplus.kr", // plain text body
+    html: "<b>안녕하세요, 비플러스입니다!🐝</b><p>아래 링크로 접속하여 자료를 제출해주세요.</p><a href='https://loan.benefitplus.kr' >자료제출</a>", // html body
   });
 
   console.log("Message sent: %s", info.messageId);
