@@ -39,7 +39,7 @@ const coupangEats = () => {
 
   const input = {
     userId: userId,
-    userPw: userPw,
+    userPw: userPw !== null ? encryptStorage.decryptString(userPw) : "",
     dateFrom: date.BeforeOneYear(),
     dateTo: date.yyyymmdd(),
   };
