@@ -14,28 +14,20 @@ const showConfirmModal = () => {
   document.getElementById("confirmModal").classList.add("flex");
 };
 
-// const save = async () => {
-//   businessRegistration();
-//   taxEvasion();
-//   localTaxEvasion();
-//   certIncome();
-//   certVAT();
-//   cardSales();
-//   baemin();
-//   coupangEats();
-//   showConfirmModal();
-// };
+const showerrorModal = () => {
+  document.getElementById("errorModal").classList.remove("fixed");
+  document.getElementById("errorModal").classList.add("hidden");
+};
 
-// save();
+const save = async () => {
+  businessRegistration();
+  taxEvasion();
+  localTaxEvasion();
+  certIncome();
+  certVAT();
+  cardSales();
+  baemin();
+  coupangEats();
+};
 
-businessRegistration().then(
-  taxEvasion().then(
-    localTaxEvasion(
-      certIncome.then(
-        certVAT.then(
-          cardSales.then(baemin.then(coupangEats.then(showConfirmModal())))
-        )
-      )
-    )
-  )
-);
+save().then(showConfirmModal, showerrorModal);
