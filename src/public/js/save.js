@@ -1,3 +1,13 @@
+import { EncryptStorage } from "encrypt-storage";
+
+export const encryptStorage = new EncryptStorage(
+  process.env.SESSION_STORAGE_KEY,
+  {
+    prefix: "@bplus",
+    storageType: "sessionStorage",
+  }
+);
+
 import businessRegistration from "./scraping/scrapingBusinessRegistration";
 import taxEvasion from "./scraping/scrapingTaxEvasion";
 import localTaxEvasion from "./scraping/scrapingLocalTaxEvasion";
