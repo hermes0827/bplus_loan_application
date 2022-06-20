@@ -1,4 +1,3 @@
-import qs from "qs";
 import axios from "axios";
 
 const sendNateon = (name, phone_no) => {
@@ -8,7 +7,7 @@ const sendNateon = (name, phone_no) => {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     params: {
-      content: data,
+      content: encodeURI(data),
     },
     url: "/nateon",
   };
