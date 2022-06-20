@@ -47,16 +47,18 @@ const passedOrNot = async (e) => {
       output: JSON.stringify(passedData),
     };
 
-    await axios.post("/bplus", JSONData).then((res) => {
-      if (res.data.success) {
-        formKYC.setAttribute("method", "get");
-        formKYC.setAttribute("action", "/cert");
-      } else {
-        document.alert("서버가 응답하지 않습니다.");
-        formKYC.setAttribute("method", "get");
-        formKYC.setAttribute("action", "/kyc");
-      }
-    });
+    await axios
+      .post("https://benefitplus.kr/api/loan_recpetion", JSONData)
+      .then((res) => {
+        if (res.data.success) {
+          formKYC.setAttribute("method", "get");
+          formKYC.setAttribute("action", "/cert");
+        } else {
+          document.alert("서버가 응답하지 않습니다.");
+          formKYC.setAttribute("method", "get");
+          formKYC.setAttribute("action", "/kyc");
+        }
+      });
   }
 };
 

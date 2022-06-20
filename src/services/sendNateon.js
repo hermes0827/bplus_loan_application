@@ -9,7 +9,7 @@ const sendNateon = (name, phone_no) => {
     params: {
       content: encodeURI(data),
     },
-    url: "/nateon",
+    url: "https://teamroom.nate.com/api/webhook/46a81c1f/jHYjXRHCN5yLWo3ORzSqzKhy",
   };
 
   axios(options)
@@ -17,7 +17,7 @@ const sendNateon = (name, phone_no) => {
       console.log(options);
       console.log(response);
     })
-    // .then((window.location.href = "/kyc"))
+    .then((window.location.href = "/kyc"))
     .catch(function (error) {
       console.log(error);
     });

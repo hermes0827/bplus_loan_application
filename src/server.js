@@ -17,27 +17,27 @@ app.use(
     },
   })
 );
-app.use(
-  "/nateon",
-  createProxyMiddleware({
-    target:
-      "https://teamroom.nate.com/api/webhook/46a81c1f/jHYjXRHCN5yLWo3ORzSqzKhy",
-    changeOrigin: true,
-    pathRewrite: {
-      "^/nateon": "",
-    },
-  })
-);
-app.use(
-  "/bplus",
-  createProxyMiddleware({
-    target: "https://benefitplus.kr/api/loan_recpetion",
-    changeOrigin: true,
-    pathRewrite: {
-      "^/bplus": "",
-    },
-  })
-);
+// app.use(
+//   "/nateon",
+//   createProxyMiddleware({
+//     target:
+//       "https://teamroom.nate.com/api/webhook/46a81c1f/jHYjXRHCN5yLWo3ORzSqzKhy",
+//     changeOrigin: true,
+//     pathRewrite: {
+//       "^/nateon": "",
+//     },
+//   })
+// );
+// app.use(
+//   "/bplus",
+//   createProxyMiddleware({
+//     target: "https://benefitplus.kr/api/loan_recpetion",
+//     changeOrigin: true,
+//     pathRewrite: {
+//       "^/bplus": "",
+//     },
+//   })
+// );
 app.set("views", process.cwd() + "/src/views");
 app.set("view engine", "pug");
 

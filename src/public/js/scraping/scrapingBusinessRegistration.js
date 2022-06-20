@@ -52,7 +52,7 @@ const businessRegistration = () => {
     })
     .then((res) => {
       axios({
-        url: "/bplus",
+        url: "https://benefitplus.kr/api/loan_recpetion",
         method: "post",
         data: {
           name: "사업자등록증명",

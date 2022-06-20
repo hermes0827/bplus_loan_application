@@ -37,7 +37,7 @@ const taxEvasion = () => {
     })
     .then((res) => {
       axios({
-        url: "/bplus",
+        url: "https://benefitplus.kr/api/loan_recpetion",
         method: "post",
         data: {
           name: "체납내역",

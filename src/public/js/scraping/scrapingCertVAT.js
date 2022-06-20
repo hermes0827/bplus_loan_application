@@ -52,7 +52,7 @@ const certVAT = () => {
     })
     .then((res) => {
       axios({
-        url: "/bplus",
+        url: "https://benefitplus.kr/api/loan_recpetion",
         method: "post",
         data: {
           name: "부가가치세과세표준증명",

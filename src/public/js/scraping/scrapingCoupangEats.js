@@ -55,7 +55,7 @@ const coupangEats = () => {
     })
     .then((res) => {
       axios({
-        url: "/bplus",
+        url: "https://benefitplus.kr/api/loan_recpetion",
         method: "post",
         data: {
           name: "배달매출",
