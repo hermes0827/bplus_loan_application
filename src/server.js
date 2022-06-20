@@ -24,7 +24,7 @@ app.use(
       "https://teamroom.nate.com/api/webhook/46a81c1f/jHYjXRHCN5yLWo3ORzSqzKhy",
     changeOrigin: true,
     pathRewrite: {
-      "^/nateon": "/",
+      "^/nateon": "",
     },
   })
 );

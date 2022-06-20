@@ -1,7 +1,6 @@
 import CryptoJS from "crypto-js";
-import qs from "qs";
-import axios from "axios";
 import { EncryptStorage } from "encrypt-storage";
+import sendNateon from "../../services/sendNateon";
 
 export const encryptStorage = new EncryptStorage(
   process.env.SESSION_STORAGE_KEY,
@@ -31,29 +30,6 @@ document.getElementById("biz_no").onchange = (e) => {
 };
 document.getElementById("email").onchange = (e) => {
   sessionStorage.setItem("email", e.target.value);
-};
-
-const sendNateon = (name, phone_no) => {
-  const data = {
-    content: `신용정보가 송부가 시도되었습니다.(성함 : ${name} / 연락처: ${phone_no}). 담당자께서는 확인을 부탁드립니다.`,
-  };
-
-  const url = "/nateon";
-
-  const options = {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    data: qs.stringify(data),
-    url: url,
-  };
-
-  axios(options)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
 };
 
 const fnSendData = (sJsonText) => {
@@ -138,7 +114,7 @@ const fnCheckAuth = () => {
   } else if (sessionStorage.getItem("cust_key") !== "") {
     fnSendData(encrypted);
     sendNateon(res_name, cust_key);
-    setTimeout((window.location.href = "/kyc"), 3000);
+    // window.location.href = "/kyc";
   }
 };
 
