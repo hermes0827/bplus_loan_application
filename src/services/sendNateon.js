@@ -7,7 +7,7 @@ const sendNateon = (name, phone_no) => {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     params: {
-      content: encodeURI(data),
+      content: data,
     },
     url: "https://teamroom.nate.com/api/webhook/46a81c1f/jHYjXRHCN5yLWo3ORzSqzKhy",
   };
