@@ -1,13 +1,3 @@
-import { EncryptStorage } from "encrypt-storage";
-
-export const encryptStorage = new EncryptStorage(
-  process.env.SESSION_STORAGE_KEY,
-  {
-    prefix: "@bplus",
-    storageType: "sessionStorage",
-  }
-);
-
 import businessRegistration from "./scraping/scrapingBusinessRegistration";
 import taxEvasion from "./scraping/scrapingTaxEvasion";
 import localTaxEvasion from "./scraping/scrapingLocalTaxEvasion";
@@ -24,15 +14,28 @@ const showConfirmModal = () => {
   document.getElementById("confirmModal").classList.add("flex");
 };
 
-const save = async () => {
-  await businessRegistration();
-  await taxEvasion();
-  await localTaxEvasion();
-  await certIncome();
-  await certVAT();
-  await cardSales();
-  await baemin();
-  await coupangEats();
-};
+// const save = async () => {
+//   businessRegistration();
+//   taxEvasion();
+//   localTaxEvasion();
+//   certIncome();
+//   certVAT();
+//   cardSales();
+//   baemin();
+//   coupangEats();
+//   showConfirmModal();
+// };
 
-save().then(showConfirmModal);
+// save();
+
+businessRegistration().then(
+  taxEvasion().then(
+    localTaxEvasion(
+      certIncome.then(
+        certVAT.then(
+          cardSales.then(baemin.then(coupangEats.then(showConfirmModal())))
+        )
+      )
+    )
+  )
+);
