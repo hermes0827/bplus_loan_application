@@ -29,7 +29,7 @@ const cardSales = () => {
 
   const input = {
     userId: userId,
-    userPw: encryptStorage.decryptString(userPw),
+    userPw: userPw,
     fromDate: date.BeforeOneYear(),
     toDate: date.yyyymm(),
     detailYn: "Y",
