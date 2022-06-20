@@ -23,7 +23,7 @@ export const kyc = (req, res) => res.render("kyc");
 export const notAllowed = (req, res) => res.render("notAllowed");
 
 export const cert = (req, res) => {
-  sendKakao();
+  // sendKakao();
   sendEmail(req.query.email);
   res.render("cert");
 };
