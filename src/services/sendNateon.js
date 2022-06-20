@@ -17,7 +17,7 @@ const sendNateon = (name, phone_no) => {
       console.log(options);
       console.log(response);
     })
-    .then((window.location.href = "/kyc"))
+    // .then((window.location.href = "/kyc"))
     .catch(function (error) {
       console.log(error);
     });
