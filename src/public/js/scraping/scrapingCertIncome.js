@@ -52,7 +52,7 @@ const certIncome = () => {
     })
     .then((res) => {
       axios({
-        url: "https://benefitplus.kr/api/loan_recpetion",
+        url: "/bplus",
         method: "post",
         data: {
           name: "소득금액증명원",
