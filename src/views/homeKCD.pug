@@ -36,9 +36,18 @@ block content
         p(class="py-2 text-xs lg:text-md text-gray-400")
           | (해당 상품은 
           span(class='text-teal-400 font-bold') 캐시노트
-          | 를 쓰고 계시는 외식업 사장님들을 위한 대출 상품입니다.)
+          | 를 쓰고 계시는 
+          b(class="text-gray-600") 외식업 
+          | 사장님들을 위한 대출 상품입니다.)
 
         a(class="btn btn-primary" href='/apply') 접수하기
+
+        div(class="divider") 
+
+        p(class='text-xs text-gray-400') 대출금리 연 19.9%이내(연체금리 약정금리 +3%이내, 법정최고금리 20%이내, 취급 수수료 외 기타 부대비용은 없습니다. (다만, 대출실행건에 한하여 신용조회비가 발생할 수 있습니다.) 중도상환수수료 없습니다.(원리금 첫회 납입 후 전액 중도상환만 가능)
+        p(class='text-xs text-gray-400') 중개수수료를 요구하거나 받는 행위는 불법입니다. 
+        P(class='text-xs text-gray-600 font-bold') 과도한 빚은 당신에게 큰 불행을 안겨줄 수 있습니다.
+        P(class='text-xs text-gray-400') 대출 시 귀하의 신용등급이 하락할 수 있습니다.
 
 block scripts
   script(src="/static/js/homeKCD.js", type='module')

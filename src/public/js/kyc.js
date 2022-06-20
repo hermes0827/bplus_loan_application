@@ -51,7 +51,6 @@ const passedOrNot = async (e) => {
       .post("https://benefitplus.kr/api/loan_recpetion", JSONData)
       .then((res) => {
         if (res.data.success) {
-          const email = sessionStorage.getItem("email");
           formKYC.setAttribute("method", "get");
           formKYC.setAttribute("action", "/cert");
         } else {
