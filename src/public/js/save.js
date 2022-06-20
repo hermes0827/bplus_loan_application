@@ -24,15 +24,15 @@ const showConfirmModal = () => {
   document.getElementById("confirmModal").classList.add("flex");
 };
 
-businessRegistration();
-taxEvasion();
-localTaxEvasion();
-certIncome();
-certVAT();
-cardSales();
-baemin();
-coupangEats();
+const save = async () => {
+  await businessRegistration();
+  await taxEvasion();
+  await localTaxEvasion();
+  await certIncome();
+  await certVAT();
+  await cardSales();
+  await baemin();
+  await coupangEats();
+};
 
-setTimeout(() => {
-  showConfirmModal();
-}, delay);
+save().then(showConfirmModal);
