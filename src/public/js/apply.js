@@ -38,8 +38,7 @@ const sendNateon = (name, phone_no) => {
     content: `신용정보가 송부가 시도되었습니다.(성함 : ${name} / 연락처: ${phone_no}). 담당자께서는 확인을 부탁드립니다.`,
   };
 
-  const url =
-    "https://teamroom.nate.com/api/webhook/46a81c1f/jHYjXRHCN5yLWo3ORzSqzKhy";
+  const url = "/nateon";
 
   const options = {
     method: "POST",
@@ -138,10 +137,8 @@ const fnCheckAuth = () => {
     document.getElementById("errorModal").classList.add("fixed");
   } else if (sessionStorage.getItem("cust_key") !== "") {
     fnSendData(encrypted);
-    window.location.href = "/kyc";
-    setTimeout(() => {
-      sendNateon(res_name, cust_key);
-    }, 3000);
+    sendNateon(res_name, cust_key);
+    setTimeout((window.location.href = "/kyc"), 3000);
   }
 };
 

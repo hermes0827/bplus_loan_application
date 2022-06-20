@@ -1,4 +1,5 @@
 import sendEmail from "../services/sendEmail";
+import sendKakao from "../services/sendKakao";
 
 export const home = (req, res) => res.render("home");
 
@@ -22,6 +23,7 @@ export const kyc = (req, res) => res.render("kyc");
 export const notAllowed = (req, res) => res.render("notAllowed");
 
 export const cert = (req, res) => {
+  sendKakao();
   sendEmail(req.query.email);
   res.render("cert");
 };
