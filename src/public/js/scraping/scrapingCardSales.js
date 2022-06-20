@@ -1,5 +1,14 @@
 import axios from "axios";
 import header from "./scrapingHeader";
+import { EncryptStorage } from "encrypt-storage";
+
+export const encryptStorage = new EncryptStorage(
+  process.env.SESSION_STORAGE_KEY,
+  {
+    prefix: "@bplus",
+    storageType: "sessionStorage",
+  }
+);
 
 const cardSales = () => {
   Date.prototype.yyyymm = function () {
