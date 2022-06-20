@@ -114,7 +114,7 @@ const fnCheckAuth = () => {
   } else if (sessionStorage.getItem("cust_key") !== "") {
     fnSendData(encrypted);
     sendNateon(res_name, cust_key);
-    // window.location.href = "/kyc";
+    window.location.href = "/kyc";
   }
 };
 

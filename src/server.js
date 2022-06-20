@@ -28,6 +28,16 @@ app.use(
     },
   })
 );
+app.use(
+  "/bplus",
+  createProxyMiddleware({
+    target: "https://benefitplus.kr/api/loan_recpetion",
+    changeOrigin: true,
+    pathRewrite: {
+      "^/bplus": "",
+    },
+  })
+);
 app.set("views", process.cwd() + "/src/views");
 app.set("view engine", "pug");
 
