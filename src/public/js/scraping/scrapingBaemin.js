@@ -59,7 +59,7 @@ const baemin = async () => {
             body: new URLSearchParams({
               name: "배달매출",
               input: "",
-              output: res.out,
+              output: JSON.stringify(res),
             }),
           });
         } else {

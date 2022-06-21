@@ -38,21 +38,14 @@ const taxEvasion = async () => {
       }
     })
     .then((res) => {
-      const data = {
-        name: "체납내역",
-        input: "1",
-        output: res.out,
-      };
-
+      console.log(res.out);
       fetch("https://benefitplus.kr/api/loan_recpetion", {
         method: "POST",
         body: new URLSearchParams({
           name: "체납내역",
           input: "1",
-          output: res.out,
+          output: JSON.stringify(res),
         }),
-      }).then((res) => {
-        console.log(res.json());
       });
     });
 };

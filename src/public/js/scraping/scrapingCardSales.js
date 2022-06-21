@@ -51,7 +51,7 @@ const cardSales = () => {
             body: new URLSearchParams({
               name: "카드매출",
               input: "",
-              output: res.out,
+              output: JSON.stringify(res),
             }),
           });
         } else {
