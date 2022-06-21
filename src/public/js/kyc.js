@@ -19,7 +19,7 @@ document.querySelector("#email").setAttribute("value", email);
 const formKYC = document.querySelector("#formKYC");
 const submitKYC = document.querySelector("#submitKYC");
 
-const passedOrNot = async (e) => {
+const passedOrNot = async () => {
   if (document.querySelector("#understanding_negative").checked) {
     formKYC.setAttribute("method", "get");
     formKYC.setAttribute("action", "/notAllowed");

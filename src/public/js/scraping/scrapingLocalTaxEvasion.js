@@ -10,7 +10,7 @@ export const encryptStorage = new EncryptStorage(
   }
 );
 
-const taxEvasion = () => {
+const taxEvasion = async () => {
   const signCert = sessionStorage.getItem("@bplus:signCert");
   const signPri = sessionStorage.getItem("@bplus:signKey");
   const signPw = sessionStorage.getItem("@bplus:signPw");
@@ -25,27 +25,29 @@ const taxEvasion = () => {
     juso_subNo: "1100000000",
   };
 
-  axios({
-    url: "/api/in0088000452",
-    method: "post",
+  await fetch("/api/in0088000452", {
+    method: "POST",
     headers: header,
-    data: input,
+    body: JSON.stringify(input),
   })
     .then((res) => {
-      if (res.data.errYn === "Y") {
-        return alert("지방세 납세증명 제출에 실패하였습니다.");
+      return res.json();
+    })
+    .then((res) => {
+      if (res.out.errYn === "N") {
+        res.out.phone_no = sessionStorage.getItem("cust_key");
+        return res;
       } else {
-        res.data.phone_no = sessionStorage.getItem("cust_key");
-        return res.data;
+        return alert("지방세 납세증명 제출에 실패하였습니다.");
       }
     })
     .then((res) => {
-      axios({
-        url: "https://benefitplus.kr/api/loan_recpetion",
-        method: "post",
-        data: new URLSearchParams({
+      console.log(res.out);
+      fetch("https://benefitplus.kr/api/loan_recpetion", {
+        method: "POST",
+        body: new URLSearchParams({
           name: "지방세 체납내역",
-          input: "",
+          input: "1",
           output: JSON.stringify(res),
         }),
       });

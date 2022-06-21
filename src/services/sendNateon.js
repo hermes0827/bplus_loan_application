@@ -13,11 +13,9 @@ const sendNateon = (name, phone_no) => {
   };
 
   axios(options)
-    .then(function (response) {
-      console.log(options);
-      console.log(response);
+    .then((res) => {
+      console.log(res);
     })
-    .then((window.location.href = "/kyc"))
     .catch(function (error) {
       console.log(error);
     });

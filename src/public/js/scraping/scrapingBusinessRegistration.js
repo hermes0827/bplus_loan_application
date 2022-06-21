@@ -10,7 +10,7 @@ export const encryptStorage = new EncryptStorage(
   }
 );
 
-const businessRegistration = () => {
+const businessRegistration = async () => {
   const presentYear = new Date().getFullYear();
 
   const signCert = sessionStorage.getItem("@bplus:signCert");
@@ -36,29 +36,31 @@ const businessRegistration = () => {
     pdfYn: "Y",
   };
 
-  axios({
-    url: "/api/in0076000333",
-    method: "post",
+  await fetch("/api/in0076000333", {
+    method: "POST",
     headers: header,
-    data: input,
+    body: JSON.stringify(input),
   })
     .then((res) => {
-      if (res.data.out.errYn === "Y") {
-        return alert("사업자등록증명 제출에 실패하였습니다.");
+      return res.json();
+    })
+    .then((res) => {
+      if (res.out.errYn === "N") {
+        res.out.phone_no = sessionStorage.getItem("cust_key");
+        return res;
       } else {
-        res.data.phone_no = sessionStorage.getItem("cust_key");
-        return res.data;
+        return alert("사업자등록증명 제출에 실패하였습니다.");
       }
     })
     .then((res) => {
-      axios({
-        url: "https://benefitplus.kr/api/loan_recpetion",
-        method: "post",
-        data: {
+      console.log(res.out);
+      fetch("https://benefitplus.kr/api/loan_recpetion", {
+        method: "POST",
+        body: new URLSearchParams({
           name: "사업자등록증명",
-          input: "",
+          input: "1",
           output: JSON.stringify(res),
-        },
+        }),
       });
     });
 };

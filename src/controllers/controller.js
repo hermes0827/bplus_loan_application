@@ -18,8 +18,10 @@ export const coupangEats = (req, res) =>
     url: "https://store.coupangeats.com/merchant/login",
   });
 
-export const kyc = (req, res) => res.render("kyc");
-
+export const kyc = (req, res) => {
+  console.log(req);
+  res.render("kyc");
+};
 export const notAllowed = (req, res) => res.render("notAllowed");
 
 export const cert = (req, res) => {

