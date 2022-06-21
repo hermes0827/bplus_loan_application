@@ -20,14 +20,16 @@ const showerrorModal = () => {
 };
 
 const save = async () => {
-  businessRegistration();
-  taxEvasion();
-  localTaxEvasion();
-  certIncome();
-  certVAT();
-  cardSales();
-  baemin();
-  coupangEats();
+  await businessRegistration();
+  await taxEvasion();
+  await localTaxEvasion();
+  await certIncome();
+  await certVAT();
+  await cardSales();
+  await baemin();
+  await coupangEats();
 };
 
-save().then(showConfirmModal, showerrorModal);
+setTimeout(() => {
+  save();
+}, delay);

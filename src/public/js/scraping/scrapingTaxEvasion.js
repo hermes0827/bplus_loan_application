@@ -28,23 +28,29 @@ const taxEvasion = () => {
     data: input,
   })
     .then((res) => {
-      if (res.data.out.errYn === "Y") {
-        return alert("체납 내역 제출에 실패하였습니다.");
-      } else {
+      if (res.data.out.errYn === "N") {
         res.data.phone_no = sessionStorage.getItem("cust_key");
         return res.data;
+      } else {
+        return alert("체납 내역 제출에 실패하였습니다.");
       }
     })
     .then((res) => {
-      axios({
-        url: "https://benefitplus.kr/api/loan_recpetion",
-        method: "post",
-        data: {
-          name: "체납내역",
-          input: "",
-          output: JSON.stringify(res),
-        },
-      });
+      const data = {
+        name: "체납내역",
+        input: "",
+        output: res,
+      };
+      console.log(res);
+      axios
+        .post("https://benefitplus.kr/api/loan_recpetion", data)
+        .then((res) => {
+          if (res.data.success) {
+            console.log("success");
+          } else {
+            console.log("rejected");
+          }
+        });
     });
 };
 
