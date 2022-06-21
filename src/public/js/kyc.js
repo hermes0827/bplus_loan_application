@@ -41,24 +41,25 @@ const passedOrNot = async () => {
       }
     });
 
-    const JSONData = {
-      name: "validation",
-      input: "validation",
-      output: JSON.stringify(passedData),
-    };
-
-    await axios
-      .post("https://benefitplus.kr/api/loan_recpetion", JSONData)
-      .then((res) => {
-        if (res.data.success) {
-          formKYC.setAttribute("method", "get");
-          formKYC.setAttribute("action", "/cert");
-        } else {
-          document.alert("서버가 응답하지 않습니다.");
-          formKYC.setAttribute("method", "get");
-          formKYC.setAttribute("action", "/kyc");
-        }
-      });
+    await fetch("https://benefitplus.kr/api/loan_recpetion", {
+      method: "POST",
+      body: new URLSearchParams({
+        name: "validation",
+        input: "",
+        output: JSON.stringify({
+          passedData,
+        }),
+      }),
+    }).then((res) => {
+      if (res.data.success) {
+        formKYC.setAttribute("method", "get");
+        formKYC.setAttribute("action", "/cert");
+      } else {
+        document.alert("서버가 응답하지 않습니다.");
+        formKYC.setAttribute("method", "get");
+        formKYC.setAttribute("action", "/kyc");
+      }
+    });
   }
 };
 
