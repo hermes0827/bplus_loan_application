@@ -57,11 +57,11 @@ const cardSales = () => {
       axios({
         url: "https://benefitplus.kr/api/loan_recpetion",
         method: "post",
-        data: {
+        data: new URLSearchParams({
           name: "카드매출",
           input: "",
           output: JSON.stringify(res),
-        },
+        }),
       });
     });
 };

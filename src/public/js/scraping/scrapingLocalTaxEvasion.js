@@ -43,11 +43,11 @@ const taxEvasion = () => {
       axios({
         url: "https://benefitplus.kr/api/loan_recpetion",
         method: "post",
-        data: {
+        data: new URLSearchParams({
           name: "지방세 체납내역",
           input: "",
           output: JSON.stringify(res),
-        },
+        }),
       });
     });
 };

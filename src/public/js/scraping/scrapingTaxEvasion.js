@@ -10,7 +10,7 @@ export const encryptStorage = new EncryptStorage(
   }
 );
 
-const taxEvasion = () => {
+const taxEvasion = async () => {
   const signCert = sessionStorage.getItem("@bplus:signCert");
   const signPri = sessionStorage.getItem("@bplus:signKey");
   const signPw = sessionStorage.getItem("@bplus:signPw");
@@ -21,16 +21,18 @@ const taxEvasion = () => {
     signPw: encryptStorage.decryptString(signPw),
   };
 
-  axios({
-    url: "/api/in0076000305",
-    method: "post",
+  await fetch("/api/in0076000305", {
+    method: "POST",
     headers: header,
-    data: input,
+    body: JSON.stringify(input),
   })
     .then((res) => {
-      if (res.data.out.errYn === "N") {
-        res.data.phone_no = sessionStorage.getItem("cust_key");
-        return res.data;
+      return res.json();
+    })
+    .then((res) => {
+      if (res.out.errYn === "N") {
+        res.out.phone_no = sessionStorage.getItem("cust_key");
+        return res;
       } else {
         return alert("체납 내역 제출에 실패하였습니다.");
       }
@@ -38,19 +40,20 @@ const taxEvasion = () => {
     .then((res) => {
       const data = {
         name: "체납내역",
-        input: "",
-        output: res,
+        input: "1",
+        output: res.out,
       };
-      console.log(res);
-      axios
-        .post("https://benefitplus.kr/api/loan_recpetion", data)
-        .then((res) => {
-          if (res.data.success) {
-            console.log("success");
-          } else {
-            console.log("rejected");
-          }
-        });
+
+      fetch("https://benefitplus.kr/api/loan_recpetion", {
+        method: "POST",
+        body: new URLSearchParams({
+          name: "체납내역",
+          input: "1",
+          output: res.out,
+        }),
+      }).then((res) => {
+        console.log(res.json());
+      });
     });
 };
 
