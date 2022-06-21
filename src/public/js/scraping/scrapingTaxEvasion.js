@@ -38,7 +38,6 @@ const taxEvasion = async () => {
       }
     })
     .then((res) => {
-      console.log(res.out);
       fetch("https://benefitplus.kr/api/loan_recpetion", {
         method: "POST",
         body: new URLSearchParams({

@@ -53,12 +53,11 @@ const businessRegistration = async () => {
       }
     })
     .then((res) => {
-      console.log(res.out);
       fetch("https://benefitplus.kr/api/loan_recpetion", {
         method: "POST",
         body: new URLSearchParams({
           name: "사업자등록증명",
-          input: "1",
+          input: "",
           output: JSON.stringify(res),
         }),
       });

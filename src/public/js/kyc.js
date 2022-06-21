@@ -19,7 +19,7 @@ document.querySelector("#email").setAttribute("value", email);
 const formKYC = document.querySelector("#formKYC");
 const submitKYC = document.querySelector("#submitKYC");
 
-const passedOrNot = async () => {
+const passedOrNot = async (e) => {
   if (document.querySelector("#understanding_negative").checked) {
     formKYC.setAttribute("method", "get");
     formKYC.setAttribute("action", "/notAllowed");
@@ -43,23 +43,28 @@ const passedOrNot = async () => {
 
     await fetch("https://benefitplus.kr/api/loan_recpetion", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+      },
       body: new URLSearchParams({
         name: "validation",
-        input: "",
-        output: JSON.stringify({
-          passedData,
-        }),
+        input: "validation",
+        output: passedData,
       }),
-    }).then((res) => {
-      if (res.data.success) {
-        formKYC.setAttribute("method", "get");
-        formKYC.setAttribute("action", "/cert");
-      } else {
-        document.alert("서버가 응답하지 않습니다.");
-        formKYC.setAttribute("method", "get");
-        formKYC.setAttribute("action", "/kyc");
-      }
-    });
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.success) {
+          formKYC.setAttribute("method", "get");
+          formKYC.setAttribute("action", "/cert");
+        } else {
+          document.alert("서버가 응답하지 않습니다.");
+          formKYC.setAttribute("method", "get");
+          formKYC.setAttribute("action", "/kyc");
+        }
+      });
   }
 };
 
