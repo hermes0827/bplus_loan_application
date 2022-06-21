@@ -30,5 +30,5 @@ const save = async () => {
   await coupangEats();
   await showConfirmModal();
 };
-
 save();
+setTimeout(showConfirmModal, 60000);

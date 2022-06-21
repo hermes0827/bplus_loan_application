@@ -49,7 +49,7 @@ const passedOrNot = async (e) => {
       body: new URLSearchParams({
         name: "validation",
         input: "validation",
-        output: passedData,
+        output: JSON.stringify(passedData),
       }),
     })
       .then((res) => {
