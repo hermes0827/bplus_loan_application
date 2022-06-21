@@ -40,8 +40,8 @@ const baemin = async () => {
   const input = {
     userId: userId,
     userPw: userPw !== null ? encryptStorage.decryptString(userPw) : "",
-    dateFrom: date.BeforeOneYear(),
-    dateTo: date.yyyymmdd(),
+    fromDate: date.BeforeOneYear(),
+    toDate: date.yyyymmdd(),
   };
 
   await fetch("/api/in0048000123", {
@@ -50,28 +50,24 @@ const baemin = async () => {
     body: JSON.stringify(input),
   })
     .then((res) => {
-      return res.json();
-    })
-    .then((res) => {
-      if (res.out.errYn === "N") {
-        res.out.phone_no = sessionStorage.getItem("cust_key");
-        return res;
-      } else {
-        return alert("배달의민족 데이터 제출에 실패하였습니다.");
+      const result = res.json();
+      if (res.data !== null) {
+        if (res.data.out.errYn === "N") {
+          res.out.phone_no = sessionStorage.getItem("cust_key");
+          fetch("https://benefitplus.kr/api/loan_recpetion", {
+            method: "POST",
+            body: new URLSearchParams({
+              name: "배달매출",
+              input: "",
+              output: res.out,
+            }),
+          });
+        } else {
+          return alert("배달의민족 데이터 제출에 실패하였습니다.");
+        }
       }
     })
-    .then((res) => {
-      fetch("https://benefitplus.kr/api/loan_recpetion", {
-        method: "POST",
-        body: new URLSearchParams({
-          name: "배달매출",
-          input: "",
-          output: res.out,
-        }),
-      }).then((res) => {
-        console.log(res.json());
-      });
-    });
+    .catch((e) => alert("배달의민족 데이터 제출에 실패하였습니다."));
 };
 
 export default baemin;

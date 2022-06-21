@@ -19,15 +19,16 @@ const showerrorModal = () => {
   document.getElementById("errorModal").classList.add("hidden");
 };
 
-const save = () => {
-  // await businessRegistration();
-  taxEvasion();
-  // await localTaxEvasion();
-  // await certIncome();
-  // await certVAT();
-  // await cardSales();
-  // await baemin();
-  // await coupangEats();
+const save = async () => {
+  await businessRegistration();
+  await taxEvasion();
+  await localTaxEvasion();
+  await certIncome();
+  await certVAT();
+  await cardSales();
+  await baemin();
+  await coupangEats();
+  await showConfirmModal();
 };
 
 save();
