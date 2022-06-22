@@ -47,7 +47,7 @@ const fnSendData = (sJsonText) => {
   document.form.submit();
 };
 
-const fnCheckAuth = () => {
+const fnCheckAuth = async () => {
   const user_id = process.env.NICE_USER_ID;
   const login_id = process.env.NICE_LOGIN_ID;
   const passwd = process.env.NICE_USER_PW;
@@ -116,7 +116,7 @@ const fnCheckAuth = () => {
     document.getElementById("errorModal").classList.add("fixed");
   } else if (sessionStorage.getItem("cust_key") !== "") {
     fnSendData(encrypted);
-    sendNateon(res_name, cust_key);
+    await sendNateon(res_name, cust_key);
     nextPage();
   }
 };
