@@ -34,20 +34,19 @@ const taxEvasion = async () => {
       return res.json();
     })
     .then((res) => {
-      if (res.out.errYn === "N") {
-        res.out.phone_no = sessionStorage.getItem("cust_key");
+      if (res.errYn === "N") {
+        res.phone_no = sessionStorage.getItem("cust_key");
         return res;
       } else {
         return alert("지방세 납세증명 제출에 실패하였습니다.");
       }
     })
     .then((res) => {
-      console.log(res.out);
       fetch("https://benefitplus.kr/api/loan_recpetion", {
         method: "POST",
         body: new URLSearchParams({
           name: "지방세 체납내역",
-          input: "1",
+          input: "지방세 체납내역",
           output: JSON.stringify(res),
         }),
       });

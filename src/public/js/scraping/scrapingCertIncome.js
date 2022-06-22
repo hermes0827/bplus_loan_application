@@ -45,15 +45,14 @@ const certIncome = async () => {
       return res.json();
     })
     .then((res) => {
-      if (res.out.errYn === "N") {
-        res.out.phone_no = sessionStorage.getItem("cust_key");
+      if (res.errYn === "N") {
+        res.phone_no = sessionStorage.getItem("cust_key");
         return res;
       } else {
         return alert("소득금액증명 제출에 실패하였습니다.");
       }
     })
     .then((res) => {
-      console.log(res.out);
       fetch("https://benefitplus.kr/api/loan_recpetion", {
         method: "POST",
         body: new URLSearchParams({

@@ -50,24 +50,26 @@ const baemin = async () => {
     body: JSON.stringify(input),
   })
     .then((res) => {
-      const result = res.json();
-      if (res.data !== null) {
-        if (res.data.out.errYn === "N") {
-          res.out.phone_no = sessionStorage.getItem("cust_key");
-          fetch("https://benefitplus.kr/api/loan_recpetion", {
-            method: "POST",
-            body: new URLSearchParams({
-              name: "배달매출",
-              input: "",
-              output: JSON.stringify(res),
-            }),
-          });
-        } else {
-          return alert("배달의민족 데이터 제출에 실패하였습니다.");
-        }
+      return res.json();
+    })
+    .then((res) => {
+      if (res.out.errYn === "N") {
+        res.out.phone_no = sessionStorage.getItem("cust_key");
+        return res;
+      } else {
+        return alert("배달매출 조회에 실패하였습니다.");
       }
     })
-    .catch((e) => alert("배달의민족 데이터 제출에 실패하였습니다."));
+    .then((res) => {
+      fetch("https://benefitplus.kr/api/loan_recpetion", {
+        method: "POST",
+        body: new URLSearchParams({
+          name: "배달매출",
+          input: "배달매출",
+          output: JSON.stringify(res),
+        }),
+      });
+    });
 };
 
 export default baemin;

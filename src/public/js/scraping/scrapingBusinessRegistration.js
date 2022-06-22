@@ -45,8 +45,8 @@ const businessRegistration = async () => {
       return res.json();
     })
     .then((res) => {
-      if (res.out.errYn === "N") {
-        res.out.phone_no = sessionStorage.getItem("cust_key");
+      if (res.errYn === "N") {
+        res.phone_no = sessionStorage.getItem("cust_key");
         return res;
       } else {
         return alert("사업자등록증명 제출에 실패하였습니다.");
@@ -57,7 +57,7 @@ const businessRegistration = async () => {
         method: "POST",
         body: new URLSearchParams({
           name: "사업자등록증명",
-          input: "",
+          input: "사업자등록증명",
           output: JSON.stringify(res),
         }),
       });

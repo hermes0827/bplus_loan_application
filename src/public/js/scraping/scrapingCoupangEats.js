@@ -10,7 +10,7 @@ export const encryptStorage = new EncryptStorage(
   }
 );
 
-const coupangEats = () => {
+const coupangEats = async () => {
   Date.prototype.yyyymmdd = function () {
     var mm = this.getMonth() + 1; // getMonth() is zero-based
     var dd = this.getDate();
@@ -44,30 +44,32 @@ const coupangEats = () => {
     dateTo: date.yyyymmdd(),
   };
 
-  axios({
-    url: "/api/in0048000123",
-    method: "post",
+  await fetch("/api/in0048000123", {
+    method: "POST",
     headers: header,
-    data: input,
+    body: JSON.stringify(input),
   })
     .then((res) => {
-      if (res.data !== null) {
-        if (res.data.out.errYn === "N") {
-          res.out.phone_no = sessionStorage.getItem("cust_key");
-          fetch("https://benefitplus.kr/api/loan_recpetion", {
-            method: "POST",
-            body: new URLSearchParams({
-              name: "배달매출",
-              input: "",
-              output: JSON.stringify(res),
-            }),
-          });
-        } else {
-          return alert("쿠팡이츠 데이터 제출에 실패하였습니다.");
-        }
+      return res.json();
+    })
+    .then((res) => {
+      if (res.out.errYn === "N") {
+        res.out.phone_no = sessionStorage.getItem("cust_key");
+        return res;
+      } else {
+        return alert("카드매출 조회에 실패하였습니다.");
       }
     })
-    .catch((e) => alert("쿠팡이츠 데이터 제출에 실패하였습니다."));
+    .then((res) => {
+      fetch("https://benefitplus.kr/api/loan_recpetion", {
+        method: "POST",
+        body: new URLSearchParams({
+          name: "카드매출",
+          input: "카드매출",
+          output: JSON.stringify(res),
+        }),
+      });
+    });
 };
 
 export default coupangEats;

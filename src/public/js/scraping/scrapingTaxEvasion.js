@@ -42,7 +42,7 @@ const taxEvasion = async () => {
         method: "POST",
         body: new URLSearchParams({
           name: "체납내역",
-          input: "1",
+          input: "체납내역",
           output: JSON.stringify(res),
         }),
       });

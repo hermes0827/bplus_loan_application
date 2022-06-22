@@ -45,20 +45,19 @@ const certVAT = async () => {
       return res.json();
     })
     .then((res) => {
-      if (res.out.errYn === "N") {
-        res.out.phone_no = sessionStorage.getItem("cust_key");
+      if (res.errYn === "N") {
+        res.phone_no = sessionStorage.getItem("cust_key");
         return res;
       } else {
         return alert("부가세 과표증명원 제출에 실패하였습니다.");
       }
     })
     .then((res) => {
-      console.log(res.out);
       fetch("https://benefitplus.kr/api/loan_recpetion", {
         method: "POST",
         body: new URLSearchParams({
           name: "부가가치세과세표준증명원",
-          input: "1",
+          input: "부가가치세과세표준증명원",
           output: JSON.stringify(res),
         }),
       });
