@@ -31,8 +31,8 @@ const businessRegistration = async () => {
     amtOpYn: "Y",
     cvaDcumGranMthdCd: "10",
     cerplsnRqsQty: "1",
-    txnrmStrtYm: presentYear - 2,
-    txnrmEndYm: presentYear,
+    txnrmStrtYm: String(presentYear - 2),
+    txnrmEndYm: String(presentYear),
     pdfYn: "Y",
   };
 
