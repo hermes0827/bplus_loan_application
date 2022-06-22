@@ -54,13 +54,15 @@ const certIncome = async () => {
       }
     })
     .then((res) => {
-      fetch("https://benefitplus.kr/api/loan_recpetion", {
-        method: "POST",
-        body: new URLSearchParams({
-          name: "소득금액증명원",
-          input: "소득금액증명원",
-          output: JSON.stringify(res),
-        }),
+      if (res !== undefined) {
+        fetch("https://benefitplus.kr/api/loan_recpetion", {
+          method: "POST",
+          body: new URLSearchParams({
+            name: "소득금액증명원",
+            input: "소득금액증명원",
+            output: JSON.stringify(res),
+          }),
+      }
       });
     });
 };
