@@ -25,7 +25,7 @@ export const notAllowed = (req, res) => res.render("notAllowed");
 
 export const cert = (req, res) => {
   // sendKakao();
-  // sendEmail(req.query.email);
+  sendEmail(req.query.email);
   res.render("cert");
 };
 export const scraping = (req, res) => res.render("scraping");

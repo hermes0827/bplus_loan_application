@@ -24,9 +24,6 @@ const passedOrNot = async (e) => {
     formKYC.setAttribute("method", "get");
     formKYC.setAttribute("action", "/notAllowed");
   } else {
-    formKYC.setAttribute("method", "get");
-    formKYC.setAttribute("action", "/cert");
-
     const phone_no = document.querySelector("#cust_key").value;
 
     let passedData = {
@@ -65,6 +62,9 @@ const passedOrNot = async (e) => {
           formKYC.setAttribute("action", "/kyc");
         }
       });
+
+    formKYC.setAttribute("method", "get");
+    formKYC.setAttribute("action", "/cert");
   }
 };
 
