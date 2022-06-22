@@ -49,7 +49,8 @@ const certVAT = async () => {
         res.phone_no = sessionStorage.getItem("cust_key");
         return res;
       } else {
-        return alert("부가세 과표증명원 제출에 실패하였습니다.");
+        alert("부가세 과표증명원 제출에 실패하였습니다.");
+        return res;
       }
     })
     .then((res) => {
