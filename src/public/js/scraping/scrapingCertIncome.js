@@ -62,8 +62,8 @@ const certIncome = async () => {
             input: "소득금액증명원",
             output: JSON.stringify(res),
           }),
+        });
       }
-      });
     });
 };
 
