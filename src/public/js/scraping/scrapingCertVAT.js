@@ -31,8 +31,8 @@ const certVAT = async () => {
     amtOpYn: "Y",
     cvaDcumGranMthdCd: "10",
     cerplsnRqsQty: "1",
-    txnrmStrtYm: presentYear - 2,
-    txnrmEndYm: presentYear,
+    txnrmStrtYm: presentYear - 3,
+    txnrmEndYm: presentYear - 1,
     pdfYn: "Y",
   };
 
@@ -54,14 +54,16 @@ const certVAT = async () => {
       }
     })
     .then((res) => {
-      fetch("https://benefitplus.kr/api/loan_recpetion", {
-        method: "POST",
-        body: new URLSearchParams({
-          name: "부가가치세과세표준증명원",
-          input: "부가가치세과세표준증명원",
-          output: JSON.stringify(res),
-        }),
-      });
+      if (res !== undefined) {
+        fetch("https://benefitplus.kr/api/loan_recpetion", {
+          method: "POST",
+          body: new URLSearchParams({
+            name: "부가가치세과세표준증명",
+            input: "부가가치세과세표준증명",
+            output: JSON.stringify(res),
+          }),
+        });
+      }
     });
 };
 
