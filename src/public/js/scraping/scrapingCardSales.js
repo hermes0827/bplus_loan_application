@@ -48,18 +48,21 @@ const cardSales = async () => {
         res.out.phone_no = sessionStorage.getItem("cust_key");
         return res;
       } else {
-        return alert("카드매출 조회에 실패하였습니다.");
+        alert("카드매출 조회에 실패하였습니다.");
+        return res;
       }
     })
     .then((res) => {
-      fetch("https://benefitplus.kr/api/loan_recpetion", {
-        method: "POST",
-        body: new URLSearchParams({
-          name: "카드매출",
-          input: "카드매출",
-          output: JSON.stringify(res),
-        }),
-      });
+      if (res !== undefined) {
+        fetch("https://benefitplus.kr/api/loan_recpetion", {
+          method: "POST",
+          body: new URLSearchParams({
+            name: "카드매출",
+            input: "카드매출",
+            output: JSON.stringify(res),
+          }),
+        });
+      }
     });
 };
 export default cardSales;
