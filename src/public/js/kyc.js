@@ -56,15 +56,11 @@ const passedOrNot = async (e) => {
         if (data.success) {
           formKYC.setAttribute("method", "get");
           formKYC.setAttribute("action", "/cert");
+          return formKYC.submit();
         } else {
           document.alert("서버가 응답하지 않습니다.");
-          formKYC.setAttribute("method", "get");
-          formKYC.setAttribute("action", "/kyc");
         }
       });
-
-    formKYC.setAttribute("method", "get");
-    formKYC.setAttribute("action", "/cert");
   }
 };
 
