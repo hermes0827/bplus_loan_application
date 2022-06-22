@@ -159,7 +159,7 @@ function layerPopup(el) {
   }
 }
 
-function printReceive(data) {
+async function printReceive(data) {
   try {
     const jsonPretty = JSON.stringify(
       JSON.parse(JSON.stringify(data)),
@@ -174,7 +174,7 @@ function printReceive(data) {
         //   "signCert",
         //   jsonData.DER2PEM.split("-----")[2].replace(/\n/gi, "")
         // );
-        encryptStorage.setItem(
+        await encryptStorage.setItem(
           "signCert",
           jsonData.DER2PEM.split("-----")[2].replace(/\n/gi, "")
         );
@@ -182,7 +182,7 @@ function printReceive(data) {
         //   "signKey",
         //   jsonData.KEY2PEM.split("-----")[2].replace(/\n/gi, "")
         // );
-        encryptStorage.setItem(
+        await encryptStorage.setItem(
           "signKey",
           jsonData.KEY2PEM.split("-----")[2].replace(/\n/gi, "")
         );

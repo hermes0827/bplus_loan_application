@@ -11,7 +11,17 @@ export const encryptStorage = new EncryptStorage(
 );
 
 const certVAT = async () => {
-  const presentYear = new Date().getFullYear();
+  Date.prototype.yyyymm = function () {
+    let mm = this.getMonth(); // getMonth() is zero-based
+
+    return [this.getFullYear(), (mm > 9 ? "" : "0") + mm].join("");
+  };
+
+  Date.prototype.BeforeOneYear = function () {
+    let mm = this.getMonth() + 1; // getMonth() is zero-based
+
+    return [this.getFullYear() - 1, (mm > 9 ? "" : "0") + mm].join("");
+  };
 
   const signCert = sessionStorage.getItem("@bplus:signCert");
   const signPri = sessionStorage.getItem("@bplus:signKey");
@@ -31,8 +41,8 @@ const certVAT = async () => {
     amtOpYn: "Y",
     cvaDcumGranMthdCd: "10",
     cerplsnRqsQty: "1",
-    txnrmStrtYm: presentYear - 3,
-    txnrmEndYm: presentYear - 1,
+    txnrmStrtYm: date.BeforeOneYear(),
+    txnrmEndYm: date.yyyymm(),
     pdfYn: "Y",
   };
 
@@ -46,6 +56,7 @@ const certVAT = async () => {
     })
     .then((res) => {
       if (res.errYn === "N") {
+        console.log(res);
         res.phone_no = sessionStorage.getItem("cust_key");
         return res;
       } else {
@@ -54,6 +65,7 @@ const certVAT = async () => {
       }
     })
     .then((res) => {
+      console.log(res);
       if (res !== undefined) {
         fetch("https://benefitplus.kr/api/loan_recpetion", {
           method: "POST",
