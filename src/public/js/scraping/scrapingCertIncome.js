@@ -49,7 +49,8 @@ const certIncome = async () => {
         res.phone_no = sessionStorage.getItem("cust_key");
         return res;
       } else {
-        return alert("소득금액증명 제출에 실패하였습니다.");
+        alert("소득금액증명 제출에 실패하였습니다.");
+        return res;
       }
     })
     .then((res) => {
@@ -57,7 +58,7 @@ const certIncome = async () => {
         method: "POST",
         body: new URLSearchParams({
           name: "소득금액증명원",
-          input: "1",
+          input: "소득금액증명원",
           output: JSON.stringify(res),
         }),
       });
