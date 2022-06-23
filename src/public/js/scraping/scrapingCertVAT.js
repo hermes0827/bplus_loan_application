@@ -41,8 +41,8 @@ const certVAT = async () => {
     amtOpYn: "Y",
     cvaDcumGranMthdCd: "10",
     cerplsnRqsQty: "1",
-    txnrmStrtYm: date.BeforeOneYear(),
-    txnrmEndYm: date.yyyymm(),
+    txnrmStrtYm: String(date.BeforeOneYear()),
+    txnrmEndYm: String(date.yyyymm()),
     pdfYn: "Y",
   };
 
