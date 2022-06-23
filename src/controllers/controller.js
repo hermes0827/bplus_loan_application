@@ -35,7 +35,7 @@ export const notAllowed = (req, res) => res.render("notAllowed");
 
 export const postCert = (req, res) => {
   sendKakao("townloan_kyc", req.body.cust_key);
-  sendNateon(req.body.cust_name, req.body.key);
+  sendNateon(req.body.cust_name, req.body.cust_key);
   sendEmail(req.body.email);
   res.render("cert");
 };
