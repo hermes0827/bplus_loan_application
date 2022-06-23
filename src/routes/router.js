@@ -6,9 +6,10 @@ import {
   cardSales,
   baemin,
   coupangEats,
-  cert,
+  postCert,
   scraping,
-  kyc,
+  getKyc,
+  postKyc,
   notAllowed,
   notFound,
 } from "../controllers/controller";
@@ -21,9 +22,9 @@ router.get("/apply", apply);
 router.get("/cardsales", cardSales);
 router.get("/baemin", baemin);
 router.get("/coupangEats", coupangEats);
-router.get("/kyc", kyc);
+router.get("/kyc", getKyc).post("/kyc", postKyc);
 router.get("/notAllowed", notAllowed);
-router.get("/cert", cert);
+router.post("/cert", postCert);
 router.get("/scraping", scraping);
 
 export default router;

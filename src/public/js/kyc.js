@@ -54,7 +54,7 @@ const passedOrNot = async (e) => {
       })
       .then((data) => {
         if (data.success) {
-          formKYC.setAttribute("method", "get");
+          formKYC.setAttribute("method", "post");
           formKYC.setAttribute("action", "/cert");
           return formKYC.submit();
         } else {

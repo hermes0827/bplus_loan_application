@@ -1,6 +1,5 @@
 import CryptoJS from "crypto-js";
 import { EncryptStorage } from "encrypt-storage";
-import sendNateon from "../../services/sendNateon";
 
 export const encryptStorage = new EncryptStorage(
   process.env.SESSION_STORAGE_KEY,
@@ -10,9 +9,6 @@ export const encryptStorage = new EncryptStorage(
   }
 );
 
-const nextPage = () => {
-  window.location.href = "/kyc";
-};
 const button = document.getElementById("sendNice");
 const checkbox = document.getElementById("privacyCheckbox");
 
@@ -35,7 +31,7 @@ document.getElementById("email").onchange = (e) => {
   sessionStorage.setItem("email", e.target.value);
 };
 
-const fnSendData = (sJsonText) => {
+const fnSendData = async (sJsonText) => {
   const popup = window.open(
     "",
     "authSend",
@@ -44,7 +40,8 @@ const fnSendData = (sJsonText) => {
   document.form.target = "authSend";
   document.form.action =
     "https://www.creditinfo.co.kr:9004/nicecredit/auth/authSendGateway.cb";
-  document.form.submit();
+  await document.form.submit();
+  window.location.href = "/kyc";
 };
 
 const fnCheckAuth = async () => {
@@ -116,8 +113,6 @@ const fnCheckAuth = async () => {
     document.getElementById("errorModal").classList.add("fixed");
   } else if (sessionStorage.getItem("cust_key") !== "") {
     fnSendData(encrypted);
-    await sendNateon(res_name, cust_key);
-    nextPage();
   }
 };
 

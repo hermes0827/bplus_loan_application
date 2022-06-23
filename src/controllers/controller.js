@@ -1,5 +1,6 @@
 import sendEmail from "../services/sendEmail";
 import sendKakao from "../services/sendKakao";
+import sendNateon from "../services/sendNateon";
 
 export const home = (req, res) => {
   res.render("home");
@@ -22,14 +23,20 @@ export const coupangEats = (req, res) =>
     url: "https://store.coupangeats.com/merchant/login",
   });
 
-export const kyc = (req, res) => {
+export const getKyc = (req, res) => {
   res.render("kyc");
 };
+
+export const postKyc = (req, res) => {
+  res.render("kyc");
+};
+
 export const notAllowed = (req, res) => res.render("notAllowed");
 
-export const cert = (req, res) => {
-  sendKakao("townloan_kyc", req.query.cust_key);
-  sendEmail(req.query.email);
+export const postCert = (req, res) => {
+  sendKakao("townloan_kyc", req.body.cust_key);
+  sendNateon(req.body.cust_name, req.body.cust_name);
+  sendEmail(req.body.email);
   res.render("cert");
 };
 export const scraping = (req, res) => {
