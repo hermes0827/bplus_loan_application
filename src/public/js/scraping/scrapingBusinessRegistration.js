@@ -36,7 +36,7 @@ const businessRegistration = async () => {
     pdfYn: "Y",
   };
 
-  await fetch("/api/in0076000333", {
+  await fetch("/api/in0076000326", {
     method: "POST",
     headers: header,
     body: JSON.stringify(input),
