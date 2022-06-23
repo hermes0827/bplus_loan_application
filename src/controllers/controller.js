@@ -1,9 +1,13 @@
 import sendEmail from "../services/sendEmail";
 import sendKakao from "../services/sendKakao";
 
-export const home = (req, res) => res.render("home");
+export const home = (req, res) => {
+  res.render("home");
+};
 
-export const homeKCD = (req, res) => res.render("homeKCD");
+export const homeKCD = (req, res) => {
+  res.render("homeKCD");
+};
 
 export const apply = (req, res) => res.render("apply");
 
@@ -24,8 +28,11 @@ export const kyc = (req, res) => {
 export const notAllowed = (req, res) => res.render("notAllowed");
 
 export const cert = (req, res) => {
-  // sendKakao();
+  sendKakao("townloan_kyc", req.query.cust_key);
   sendEmail(req.query.email);
   res.render("cert");
 };
-export const scraping = (req, res) => res.render("scraping");
+export const scraping = (req, res) => {
+  sendKakao("applied_townloan", req.query.cust_key);
+  res.render("scraping");
+};
