@@ -37,28 +37,6 @@ const passedOrNot = async (e) => {
         passedData[el.name] = el.id;
       }
     });
-
-    await fetch("https://benefitplus.kr/api/loan_recpetion", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-      },
-      body: new URLSearchParams({
-        name: "validation",
-        input: "validation",
-        output: JSON.stringify(passedData),
-      }),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        if (data.success) {
-          return formKYC.submit();
-        } else {
-          document.alert("서버가 응답하지 않습니다.");
-        }
-      });
   }
 };
 

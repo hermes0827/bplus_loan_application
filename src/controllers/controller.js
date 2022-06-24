@@ -1,6 +1,7 @@
 import sendEmail from "../services/sendEmail";
 import sendKakao from "../services/sendKakao";
 import sendNateon from "../services/sendNateon";
+import sendValidation from "../services/sendValidation";
 
 export const home = (req, res) => {
   res.render("home");
@@ -33,10 +34,11 @@ export const postKyc = (req, res) => {
 
 export const notAllowed = (req, res) => res.render("notAllowed");
 
-export const postCert = (req, res) => {
-  sendKakao("townloan_accepted", req.body.cust_key);
-  sendNateon(req.body.cust_name, req.body.cust_key);
-  sendEmail(req.body.email);
+export const postCert = async (req, res) => {
+  await sendValidation(req);
+  await sendKakao("townloan_accepted", req.body.cust_key);
+  await sendNateon(req.body.cust_name, req.body.cust_key);
+  await sendEmail(req.body.email);
   res.render("cert");
 };
 
