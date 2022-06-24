@@ -8,13 +8,13 @@ const sendValidation = (req) => {
     params: {
       name: "validation",
       input: "validation",
-      output: JSON.stringify(req.body),
+      output: JSON.stringify(req),
     },
   };
 
   const sendKYC = axios(options)
     .then((res) => {
-      return res.data.success;
+      return res;
     })
     .catch((error) => {
       console.log(error);
