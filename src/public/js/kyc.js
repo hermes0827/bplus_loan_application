@@ -23,20 +23,9 @@ const passedOrNot = async (e) => {
   if (document.querySelector("#understanding_negative").checked) {
     formKYC.setAttribute("method", "get");
     formKYC.setAttribute("action", "/notAllowed");
+    formKYC.submit();
   } else {
-    const phone_no = document.querySelector("#cust_key").value;
-
-    let passedData = {
-      phone_no: phone_no,
-      name: cust_name,
-      type: type,
-    };
-
-    document.querySelectorAll("input").forEach((el) => {
-      if (el.checked) {
-        passedData[el.name] = el.id;
-      }
-    });
+    formKYC.submit();
   }
 };
 
