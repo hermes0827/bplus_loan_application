@@ -29,4 +29,4 @@ const passedOrNot = async (e) => {
   }
 };
 
-formKYC.addEventListener("submit", passedOrNot);
+submitKYC.addEventListener("submit", passedOrNot);

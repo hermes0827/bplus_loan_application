@@ -22,8 +22,6 @@ const sendNateon = (name, phone_no) => {
 };
 
 const sendValidation = async (req) => {
-  const data = req.body;
-
   const options = {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -35,7 +33,7 @@ const sendValidation = async (req) => {
     url: "https://benefitplus.kr/api/loan_recpetion",
   };
 
-  axios(options)
+  await axios(options)
     .then((res) => {
       console.log(res);
     })

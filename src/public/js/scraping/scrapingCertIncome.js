@@ -37,7 +37,7 @@ const certIncome = async () => {
       new Date().getMonth() + 1 < 7
         ? String(new Date().getFullYear() - 1)
         : String(new Date().getFullYear()),
-    pdfYn: "Y",
+    pdfYn: "N",
   };
 
   await fetch("/api/in0076000335", {

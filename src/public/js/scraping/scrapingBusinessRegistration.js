@@ -33,7 +33,7 @@ const businessRegistration = async () => {
     cerplsnRqsQty: "1",
     txnrmStrtYm: String(presentYear - 2),
     txnrmEndYm: String(presentYear),
-    pdfYn: "Y",
+    pdfYn: "N",
   };
 
   await fetch("/api/in0076000326", {
