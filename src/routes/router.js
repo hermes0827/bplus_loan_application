@@ -22,7 +22,7 @@ router.get("/apply", apply);
 router.get("/cardsales", cardSales);
 router.get("/baemin", baemin).post("/baemin", baemin);
 router.get("/coupangEats", coupangEats).post("/coupangEats", coupangEats);
-router.post("/kyc", postKyc);
+router.get("/kyc", getKyc).post("/kyc", postKyc);
 router.get("/notAllowed", notAllowed);
 router.post("/cert", postCert);
 router.get("/scraping", scraping).post("/scraping", scraping);
