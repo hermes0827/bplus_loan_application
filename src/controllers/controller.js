@@ -39,6 +39,7 @@ export const postCert = (req, res) => {
   sendEmail(req.body.email);
   res.render("cert");
 };
+
 export const scraping = (req, res) => {
   res.render("scraping");
 };

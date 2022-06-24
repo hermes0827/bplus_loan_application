@@ -54,8 +54,6 @@ const passedOrNot = async (e) => {
       })
       .then((data) => {
         if (data.success) {
-          formKYC.setAttribute("method", "post");
-          formKYC.setAttribute("action", "/cert");
           return formKYC.submit();
         } else {
           document.alert("서버가 응답하지 않습니다.");
