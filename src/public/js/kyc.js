@@ -25,6 +25,8 @@ const passedOrNot = async (e) => {
     formKYC.setAttribute("action", "/notAllowed");
     formKYC.submit();
   } else {
+    formKYC.setAttribute("method", "post");
+    formKYC.setAttribute("action", "/cert");
     formKYC.submit();
   }
 };
