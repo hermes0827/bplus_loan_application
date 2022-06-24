@@ -2,11 +2,11 @@ import axios from "axios";
 
 // 전화번호 field 추가
 const cust_key = sessionStorage.getItem("cust_key");
-document.querySelector("#cust_key").setAttribute("value", cust_key);
+document.querySelector("#phone_no").setAttribute("value", cust_key);
 
 // 이름 field 추가
 const cust_name = sessionStorage.getItem("res_name");
-document.querySelector("#cust_name").setAttribute("value", cust_name);
+document.querySelector("#name").setAttribute("value", cust_name);
 
 // type field 추가
 const type = sessionStorage.getItem("type");
