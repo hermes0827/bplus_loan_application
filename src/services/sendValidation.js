@@ -17,7 +17,7 @@ const sendValidation = (req) => {
       return res;
     })
     .catch((error) => {
-      return error;
+      throw error;
     });
 
   return sendKYC;
