@@ -8,7 +8,7 @@ const sendValidation = (req) => {
     params: {
       name: "validation",
       input: "validation",
-      output: JSON.stringify(req),
+      output: req,
     },
   };
   axios(options)
