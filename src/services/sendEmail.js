@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-async function sendEmail(email) {
+function sendEmail(email) {
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
     service: "gmail",
@@ -18,7 +18,7 @@ async function sendEmail(email) {
   });
 
   // send mail with defined transport object
-  let info = await transporter.sendMail({
+  let info = transporter.sendMail({
     from: '"BPLUS 🐝" <noreply@benefitplus.kr>', // sender address
     to: email, // list of receivers
     subject: "우리동네대출 자료 제출하기", // Subject line

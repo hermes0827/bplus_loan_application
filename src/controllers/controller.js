@@ -40,12 +40,12 @@ export const postCert = (req, res) => {
   // if (sendKYC.data.success) {
   // }
   sendKakao("townloan_accepted", req.body.cust_key);
-  sendNateon(req.body.cust_name, req.body.cust_key);
-  sendEmail(req.body.email);
+  // sendNateon(req.body.cust_name, req.body.cust_key);
+  // sendEmail(req.body.email);
   sendValidation(req.body);
   setTimeout(() => {
     res.render("cert");
-  }, 5000);
+  }, 2000);
 };
 
 export const scraping = (req, res) => {
