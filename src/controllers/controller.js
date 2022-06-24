@@ -34,8 +34,8 @@ export const postKyc = (req, res) => {
 
 export const notAllowed = (req, res) => res.render("notAllowed");
 
-export const postCert = async (req, res) => {
-  const sendKYC = await sendValidation(req);
+export const postCert = (req, res) => {
+  const sendKYC = sendValidation(req);
   if (sendKYC === true) {
     sendKakao("townloan_accepted", req.body.cust_key);
     sendNateon(req.body.cust_name, req.body.cust_key);
