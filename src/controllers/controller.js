@@ -35,8 +35,6 @@ export const postKyc = (req, res) => {
 export const notAllowed = (req, res) => res.render("notAllowed");
 
 export const postCert = (req, res) => {
-  sendValidation(req.body);
-
   // const sendKYC = sendValidation(req.body);
 
   // if (sendKYC.data.success) {
@@ -44,7 +42,7 @@ export const postCert = (req, res) => {
   sendKakao("townloan_accepted", req.body.cust_key);
   sendNateon(req.body.cust_name, req.body.cust_key);
   sendEmail(req.body.email);
-  res.render("cert");
+  sendValidation(req.body, res.render("cert"));
 };
 
 export const scraping = (req, res) => {

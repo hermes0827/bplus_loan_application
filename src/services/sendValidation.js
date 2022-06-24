@@ -11,16 +11,13 @@ const sendValidation = (req) => {
       output: JSON.stringify(req),
     },
   };
-
-  const sendKYC = axios(options)
+  axios(options)
     .then((res) => {
       return res;
     })
     .catch((error) => {
       throw error;
     });
-
-  return sendKYC;
 };
 
 export default sendValidation;
