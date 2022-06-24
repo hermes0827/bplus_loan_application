@@ -20,11 +20,11 @@ router.get("/", home);
 router.get("/kcd", homeKCD);
 router.get("/apply", apply);
 router.get("/cardsales", cardSales);
-router.get("/baemin", baemin);
-router.get("/coupangEats", coupangEats);
+router.get("/baemin", baemin).post("/baemin", baemin);
+router.get("/coupangEats", coupangEats).post("/coupangEats", coupangEats);
 router.get("/kyc", getKyc).post("/kyc", postKyc);
 router.get("/notAllowed", notAllowed);
 router.post("/cert", postCert);
-router.get("/scraping", scraping);
+router.get("/scraping", scraping).post("/scraping", scraping);
 
 export default router;

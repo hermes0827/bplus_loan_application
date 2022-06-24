@@ -11,6 +11,8 @@ mixin loginForm(buttonName, passUrl)
           input(id='password' type="password", class="input input-bordered")
           label(class="label")
             a(href=`${url}`, target='blank' class="label-text-alt link link-hover") 계정이 없으신가요?
-            a(href=passUrl, class="label-text-alt link link-hover text-center") 건너뛰기
+            form(action=`${passUrl}`, method="post") 
+              input(id='form_cust_key' type="hidden", class="input input-bordered")  
+              button(id='form_next_step' class="label-text-alt link link-hover text-center") 건너뛰기
           div(class="form-control mt-6")
             button(id=`${buttonName}` class="btn btn-primary") 로그인

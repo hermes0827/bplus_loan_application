@@ -40,8 +40,8 @@ const baemin = async () => {
   const input = {
     userId: userId,
     userPw: userPw !== null ? encryptStorage.decryptString(userPw) : "",
-    fromDate: date.BeforeOneYear(),
-    toDate: date.yyyymmdd(),
+    dateFrom: String(date.BeforeOneYear()),
+    dateTo: String(date.yyyymmdd()),
   };
 
   await fetch("/api/in0048000123", {

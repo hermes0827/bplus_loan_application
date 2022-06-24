@@ -40,8 +40,8 @@ const coupangEats = async () => {
   const input = {
     userId: userId,
     userPw: userPw !== null ? encryptStorage.decryptString(userPw) : "",
-    dateFrom: date.BeforeOneYear(),
-    dateTo: date.yyyymmdd(),
+    dateFrom: String(date.BeforeOneYear()),
+    dateTo: String(date.yyyymmdd()),
   };
 
   await fetch("/api/in0048000123", {

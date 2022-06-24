@@ -11,8 +11,6 @@ export const encryptStorage = new EncryptStorage(
 );
 
 const certIncome = async () => {
-  const presentYear = new Date().getFullYear();
-
   const signCert = sessionStorage.getItem("@bplus:signCert");
   const signPri = sessionStorage.getItem("@bplus:signKey");
   const signPw = sessionStorage.getItem("@bplus:signPw");
@@ -31,8 +29,14 @@ const certIncome = async () => {
     amtOpYn: "Y",
     cvaDcumGranMthdCd: "10",
     cerplsnRqsQty: "1",
-    txnrmStrtYm: presentYear - 2,
-    txnrmEndYm: presentYear,
+    txnrmStrtYm:
+      new Date().getMonth() + 1 < 7
+        ? String(new Date().getFullYear() - 3)
+        : String(new Date().getFullYear() - 2),
+    txnrmEndYm:
+      new Date().getMonth() + 1 < 7
+        ? String(new Date().getFullYear() - 1)
+        : String(new Date().getFullYear()),
     pdfYn: "Y",
   };
 

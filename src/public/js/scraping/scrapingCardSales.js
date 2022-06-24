@@ -30,8 +30,8 @@ const cardSales = async () => {
   const input = {
     userId: userId,
     userPw: userPw !== null ? encryptStorage.decryptString(userPw) : "",
-    fromDate: date.BeforeOneYear(),
-    toDate: date.yyyymm(),
+    fromDate: String(date.BeforeOneYear()),
+    toDate: String(date.yyyymm()),
     detailYn: "Y",
   };
 
