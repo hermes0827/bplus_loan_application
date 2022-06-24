@@ -35,10 +35,12 @@ export const postKyc = (req, res) => {
 export const notAllowed = (req, res) => res.render("notAllowed");
 
 export const postCert = async (req, res) => {
-  await sendValidation(req);
-  await sendKakao("townloan_accepted", req.body.cust_key);
-  await sendNateon(req.body.cust_name, req.body.cust_key);
-  await sendEmail(req.body.email);
+  const sendKYC = await sendValidation(req);
+  if (sendKYC === true) {
+    await sendKakao("townloan_accepted", req.body.cust_key);
+    await sendNateon(req.body.cust_name, req.body.cust_key);
+    await sendEmail(req.body.email);
+  }
   res.render("cert");
 };
 
