@@ -36,7 +36,7 @@ document.getElementById("email").onchange = (e) => {
 
 const fnSendData = async (sJsonText) => {
   const popup = window.open(
-    "",
+    "intent:",
     "authSend",
     "width=1030, height=750, scrollbars,resizable"
   );
