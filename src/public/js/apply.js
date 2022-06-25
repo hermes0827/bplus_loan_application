@@ -1,5 +1,6 @@
 import CryptoJS from "crypto-js";
 import { EncryptStorage } from "encrypt-storage";
+import niceCredit from "../images/niceCredit.png";
 
 export const encryptStorage = new EncryptStorage(
   process.env.SESSION_STORAGE_KEY,
@@ -11,6 +12,8 @@ export const encryptStorage = new EncryptStorage(
 
 const button = document.getElementById("sendNice");
 const checkbox = document.getElementById("privacyCheckbox");
+
+document.getElementById("niceDescription").src = niceCredit;
 
 document.getElementById("res_name").onchange = (e) => {
   sessionStorage.setItem("res_name", e.target.value);
