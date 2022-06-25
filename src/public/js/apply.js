@@ -38,11 +38,19 @@ const fnSendData = (sJsonText) => {
   //   "_blank",
   //   "width=1030, height=750, scrollbars,resizable"
   // );
-  document.form.target = "_blank";
-  document.form.action =
-    "intent://www.creditinfo.co.kr:9004/nicecredit/auth/authSendGateway.cb#Intent;scheme=https;package=com.android.chrome;end";
-  document.form.submit();
-  window.location.href = "/kyc";
+  if (sessionStorage.getItem("type") === "cashnote") {
+    document.form.target = "_blank";
+    document.form.action =
+      "intent://www.creditinfo.co.kr:9004/nicecredit/auth/authSendGateway.cb#Intent;scheme=https;package=com.android.chrome;end";
+    document.form.submit();
+    window.location.href = "/kyc";
+  } else {
+    document.form.target = "_blank";
+    document.form.action =
+      "https://www.creditinfo.co.kr:9004/nicecredit/auth/authSendGateway.cb";
+    document.form.submit();
+    window.location.href = "/kyc";
+  }
 };
 
 const fnCheckAuth = async () => {
