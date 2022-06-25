@@ -34,7 +34,7 @@ const certVAT = async () => {
     signPw: encryptStorage.decryptString(signPw),
     signB64Pw: encryptStorage.decryptString(signB64Pw),
     bizNo: sessionStorage.getItem("biz_no"),
-    bizB64No: btoa(sessionStorage.getItem("biz_no")),
+    telNo: sessionStorage.getItem("cust_key"),
     cvaDcumUseUsgCd: "99",
     resnoOpYn: "Y",
     adrOpYn: "Y",
@@ -43,7 +43,7 @@ const certVAT = async () => {
     cerplsnRqsQty: "1",
     txnrmStrtYm: String(date.BeforeOneYear()),
     txnrmEndYm: String(date.yyyymm()),
-    pdfYn: "Y",
+    pdfYn: "N",
   };
 
   await fetch("/api/in0076000332", {
@@ -80,5 +80,3 @@ const certVAT = async () => {
 };
 
 export default certVAT;
-
-// 사업자등록증명

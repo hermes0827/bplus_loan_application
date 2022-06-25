@@ -21,14 +21,15 @@ const showerrorModal = () => {
 
 const save = async () => {
   await businessRegistration();
-  await taxEvasion();
-  await localTaxEvasion();
   await certIncome();
   await certVAT();
+  await taxEvasion();
+  await localTaxEvasion();
   await cardSales();
   await baemin();
   await coupangEats();
   await showConfirmModal();
 };
+
 save();
 setTimeout(showConfirmModal, 60000);
