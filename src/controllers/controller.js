@@ -13,7 +13,6 @@ export const homeKCD = (req, res) => {
 };
 
 export const apply = async (req, res) => {
-  await open("https://loan.benefitplus.kr/apply");
   res.render("apply");
 };
 
