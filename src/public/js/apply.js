@@ -33,12 +33,12 @@ document.getElementById("email").onchange = (e) => {
 };
 
 const fnSendData = (sJsonText) => {
-  const popup = window.open(
-    "",
-    "authSend",
-    "width=1030, height=750, scrollbars,resizable"
-  );
-  document.form.target = "authSend";
+  // const popup = window.open(
+  //   "",
+  //   "_blank",
+  //   "width=1030, height=750, scrollbars,resizable"
+  // );
+  document.form.target = "_blank";
   document.form.action =
     "https://www.creditinfo.co.kr:9004/nicecredit/auth/authSendGateway.cb";
   document.form.submit();
