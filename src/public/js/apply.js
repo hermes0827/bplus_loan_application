@@ -34,16 +34,16 @@ document.getElementById("email").onchange = (e) => {
   sessionStorage.setItem("email", e.target.value);
 };
 
-const fnSendData = async (sJsonText) => {
+const fnSendData = (sJsonText) => {
   const popup = window.open(
-    "intent:",
+    "",
     "authSend",
     "width=1030, height=750, scrollbars,resizable"
   );
   document.form.target = "authSend";
   document.form.action =
-    "https://www.creditinfo.co.kr:9004/nicecredit/auth/authSendGateway.cb#Intent;scheme=https;package=com.android.chrome;end";
-  await document.form.submit();
+    "https://www.creditinfo.co.kr:9004/nicecredit/auth/authSendGateway.cb";
+  document.form.submit();
   window.location.href = "/kyc";
 };
 

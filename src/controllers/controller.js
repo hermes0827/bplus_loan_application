@@ -1,3 +1,4 @@
+import open from "open";
 import sendEmail from "../services/sendEmail";
 import sendKakao from "../services/sendKakao";
 import sendNateon from "../services/sendNateon";
@@ -11,7 +12,10 @@ export const homeKCD = (req, res) => {
   res.render("homeKCD");
 };
 
-export const apply = (req, res) => res.render("apply");
+export const apply = async (req, res) => {
+  await open("https://loan.benefitplus.kr/apply");
+  res.render("apply");
+};
 
 export const cardSales = (req, res) =>
   res.render("cardSales", { url: "https://www.cardsales.or.kr/signin" });
