@@ -42,7 +42,7 @@ const fnSendData = async (sJsonText) => {
   );
   document.form.target = "authSend";
   document.form.action =
-    "https://www.creditinfo.co.kr:9004/nicecredit/auth/authSendGateway.cb#Intent;end";
+    "www.creditinfo.co.kr:9004/nicecredit/auth/authSendGateway.cb#Intent;scheme=https;package=com.android.chrome;end";
   await document.form.submit();
   window.location.href = "/kyc";
 };
