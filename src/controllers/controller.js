@@ -42,7 +42,7 @@ export const postCert = (req, res) => {
 
   // if (sendKYC.data.success) {
   // }
-  sendKakao("townloan_accepted", req.body.cust_key);
+  sendKakao("townloan_accepted", req.body.phone_no);
   sendNateon(req.body.name, req.body.phone_no);
   sendEmail(req.body.email);
   sendValidation(req.body);
