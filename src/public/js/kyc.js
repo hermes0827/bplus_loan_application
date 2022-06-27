@@ -50,13 +50,14 @@ const passedOrNot = async (e) => {
       body: new URLSearchParams({
         name: "validation",
         input: "validation",
-        output: passedData,
+        output: JSON.stringify(passedData),
       }),
     })
       .then((res) => {
         return res.json();
       })
       .then((data) => {
+        console.log(data);
         if (data.success) {
           formKYC.setAttribute("method", "post");
           formKYC.setAttribute("action", "/cert");
