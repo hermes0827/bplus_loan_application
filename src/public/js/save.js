@@ -22,7 +22,7 @@ const showerrorModal = () => {
 const save = async () => {
   businessRegistration();
   certIncome();
-  await certVAT();
+  certVAT();
   taxEvasion();
   localTaxEvasion();
   cardSales();
