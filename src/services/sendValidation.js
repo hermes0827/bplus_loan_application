@@ -1,3 +1,4 @@
+import qs from "qs";
 import axios from "axios";
 
 const sendValidation = (req) => {
@@ -5,11 +6,11 @@ const sendValidation = (req) => {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     url: "https://benefitplus.kr/api/loan_recpetion",
-    params: {
+    data: qs.stringify({
       name: "validation",
       input: "validation",
-      output: req,
-    },
+      output: JSON.stringify(req.body),
+    }),
   };
 
   const result = axios(options)
@@ -19,7 +20,6 @@ const sendValidation = (req) => {
     .catch((error) => {
       throw error;
     });
-
   return result;
 };
 

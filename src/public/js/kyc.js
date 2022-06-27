@@ -27,47 +27,50 @@ const passedOrNot = async (e) => {
     formKYC.submit();
   } else {
     submitKYC.disabled = true;
-
-    const phone_no = document.querySelector("#phone_no").value;
-
-    let passedData = {
-      phone_no: phone_no,
-      name: cust_name,
-      type: type,
-    };
-
-    document.querySelectorAll("input").forEach((el) => {
-      if (el.checked) {
-        passedData[el.name] = el.id;
-      }
-    });
-
-    await fetch("https://benefitplus.kr/api/loan_recpetion", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-      },
-      body: new URLSearchParams({
-        name: "validation",
-        input: "validation",
-        output: JSON.stringify(passedData),
-      }),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        if (data.success) {
-          formKYC.setAttribute("method", "post");
-          formKYC.setAttribute("action", "/cert");
-        } else {
-          document.alert("서버가 응답하지 않습니다.");
-          formKYC.setAttribute("method", "get");
-          formKYC.setAttribute("action", "/kyc");
-        }
-      });
+    formKYC.setAttribute("method", "post");
+    formKYC.setAttribute("action", "/cert");
     formKYC.submit();
+
+    // const phone_no = document.querySelector("#phone_no").value;
+
+    // let passedData = {
+    //   phone_no: phone_no,
+    //   name: cust_name,
+    //   type: type,
+    // };
+
+    // document.querySelectorAll("input").forEach((el) => {
+    //   if (el.checked) {
+    //     passedData[el.name] = el.id;
+    //   }
+    // });
+
+    // await fetch("https://benefitplus.kr/api/loan_recpetion", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+    //   },
+    //   body: new URLSearchParams({
+    //     name: "validation",
+    //     input: "validation",
+    //     output: JSON.stringify(passedData),
+    //   }),
+    // })
+    //   .then((res) => {
+    //     return res.json();
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //     if (data.success) {
+    //       formKYC.setAttribute("method", "post");
+    //       formKYC.setAttribute("action", "/cert");
+    //     } else {
+    //       document.alert("서버가 응답하지 않습니다.");
+    //       formKYC.setAttribute("method", "get");
+    //       formKYC.setAttribute("action", "/kyc");
+    //     }
+    //   });
+    // formKYC.submit();
   }
 };
 
