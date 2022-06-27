@@ -54,7 +54,7 @@ const coupangEats = async () => {
     })
     .then((res) => {
       if (res.out.errYn === "N") {
-        res.out.phone_no = sessionStorage.getItem("cust_key");
+        res.phone_no = sessionStorage.getItem("cust_key");
         return res;
       } else {
         alert("쿠팡이츠 매출 조회에 실패하였습니다.");

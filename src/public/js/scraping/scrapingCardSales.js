@@ -12,7 +12,7 @@ export const encryptStorage = new EncryptStorage(
 
 const cardSales = async () => {
   Date.prototype.yyyymm = function () {
-    let mm = this.getMonth(); // getMonth() is zero-based
+    let mm = this.getMonth() + 1; // getMonth() is zero-based
 
     return [this.getFullYear(), (mm > 9 ? "" : "0") + mm].join("");
   };
@@ -45,10 +45,10 @@ const cardSales = async () => {
     })
     .then((res) => {
       if (res.out.errYn === "N") {
-        res.out.phone_no = sessionStorage.getItem("cust_key");
+        res.phone_no = sessionStorage.getItem("cust_key");
         return res;
       } else {
-        alert("카드매출 조회에 실패하였습니다.");
+        alert(res.out.errMsg);
         return res;
       }
     })

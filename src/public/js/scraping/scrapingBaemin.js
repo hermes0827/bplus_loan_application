@@ -54,10 +54,10 @@ const baemin = async () => {
     })
     .then((res) => {
       if (res.out.errYn === "N") {
-        res.out.phone_no = sessionStorage.getItem("cust_key");
+        res.phone_no = sessionStorage.getItem("cust_key");
         return res;
       } else {
-        alert("배달매출 조회에 실패하였습니다.");
+        alert(res.out.errMsg);
         return res;
       }
     })

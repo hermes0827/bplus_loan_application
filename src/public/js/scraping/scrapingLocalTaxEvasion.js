@@ -38,7 +38,7 @@ const taxEvasion = async () => {
         res.phone_no = sessionStorage.getItem("cust_key");
         return res;
       } else {
-        alert("지방세 납세증명 제출에 실패하였습니다.");
+        alert(res.errMsg);
         return res;
       }
     })

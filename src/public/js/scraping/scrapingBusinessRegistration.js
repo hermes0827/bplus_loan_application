@@ -45,11 +45,11 @@ const businessRegistration = async () => {
       return res.json();
     })
     .then((res) => {
-      if (res.errYn === "N") {
+      if (res.out.errYn === "N") {
         res.phone_no = sessionStorage.getItem("cust_key");
         return res;
       } else {
-        alert("사업자등록증명 제출에 실패하였습니다.");
+        alert(res.out.errMsg);
         res.phone_no = sessionStorage.getItem("cust_key");
         return res;
       }
