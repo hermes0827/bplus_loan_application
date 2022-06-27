@@ -1,4 +1,3 @@
-import open from "open";
 import sendEmail from "../services/sendEmail";
 import sendKakao from "../services/sendKakao";
 import sendNateon from "../services/sendNateon";
@@ -37,18 +36,15 @@ export const postKyc = (req, res) => {
 
 export const notAllowed = (req, res) => res.render("notAllowed");
 
-export const postCert = (req, res) => {
-  // const sendKYC = sendValidation(req.body);
+export const postCert = async (req, res) => {
+  const result = await sendValidation(req.body.data);
 
-  // if (sendKYC.data.success) {
-  // }
-  sendKakao("townloan_accepted", req.body.phone_no);
-  sendNateon(req.body.name, req.body.phone_no);
-  sendEmail(req.body.email);
-  sendValidation(req.body);
-  setTimeout(() => {
+  if (result.data.success) {
+    sendKakao("townloan_accepted", req.body.phone_no);
+    sendNateon(req.body.name, req.body.phone_no);
+    sendEmail(req.body.email);
     res.render("cert");
-  }, 2000);
+  }
 };
 
 export const scraping = (req, res) => {

@@ -11,13 +11,16 @@ const sendValidation = (req) => {
       output: req,
     },
   };
-  axios(options)
+
+  const result = axios(options)
     .then((res) => {
       return res;
     })
     .catch((error) => {
       throw error;
     });
+
+  return result;
 };
 
 export default sendValidation;
