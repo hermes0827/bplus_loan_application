@@ -44,7 +44,7 @@ const baemin = async () => {
     dateTo: String(date.yyyymmdd()),
   };
 
-  await fetch("/api/in0048000123", {
+  await fetch("/api/in0022000063", {
     method: "POST",
     headers: header,
     body: JSON.stringify(input),

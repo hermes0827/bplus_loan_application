@@ -19,7 +19,7 @@ const showerrorModal = () => {
   document.getElementById("errorModal").classList.add("hidden");
 };
 
-const save = async () => {
+const save = () => {
   businessRegistration();
   certIncome();
   certVAT();

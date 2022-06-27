@@ -44,7 +44,7 @@ const coupangEats = async () => {
     dateTo: String(date.yyyymmdd()),
   };
 
-  await fetch("/api/in0048000123", {
+  await fetch("/api/in0024000080", {
     method: "POST",
     headers: header,
     body: JSON.stringify(input),
