@@ -19,7 +19,7 @@ document.querySelector("#email").setAttribute("value", email);
 const formKYC = document.querySelector("#formKYC");
 const submitKYC = document.querySelector("#submitKYC");
 
-const passedOrNot = (e) => {
+const passedOrNot = async (e) => {
   e.preventDefault();
   if (document.querySelector("#understanding_negative").checked) {
     formKYC.setAttribute("method", "get");
@@ -27,6 +27,46 @@ const passedOrNot = (e) => {
     formKYC.submit();
   } else {
     submitKYC.disabled = true;
+
+    const phone_no = document.querySelector("#cust_key").value;
+
+    let passedData = {
+      phone_no: phone_no,
+      name: cust_name,
+      type: type,
+    };
+
+    document.querySelectorAll("input").forEach((el) => {
+      if (el.checked) {
+        passedData[el.name] = el.id;
+      }
+    });
+
+    await fetch("https://benefitplus.kr/api/loan_recpetion", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+      },
+      body: new URLSearchParams({
+        name: "validation",
+        input: "validation",
+        output: passedData,
+      }),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.success) {
+          formKYC.setAttribute("method", "get");
+          formKYC.setAttribute("action", "/cert");
+        } else {
+          document.alert("서버가 응답하지 않습니다.");
+          formKYC.setAttribute("method", "get");
+          formKYC.setAttribute("action", "/kyc");
+        }
+      });
+
     formKYC.setAttribute("method", "post");
     formKYC.setAttribute("action", "/cert");
     formKYC.submit();
