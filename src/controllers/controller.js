@@ -37,14 +37,10 @@ export const postKyc = (req, res) => {
 export const notAllowed = (req, res) => res.render("notAllowed");
 
 export const postCert = async (req, res) => {
-  const result = await sendValidation(req.body.data);
-
-  if (result.data.success) {
-    sendKakao("townloan_accepted", req.body.phone_no);
-    sendNateon(req.body.name, req.body.phone_no);
-    sendEmail(req.body.email);
-    res.render("cert");
-  }
+  sendKakao("townloan_accepted", req.body.phone_no);
+  sendNateon(req.body.name, req.body.phone_no);
+  sendEmail(req.body.email);
+  res.render("cert");
 };
 
 export const scraping = (req, res) => {
