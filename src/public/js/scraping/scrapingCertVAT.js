@@ -1,4 +1,3 @@
-import axios from "axios";
 import header from "./scrapingHeader";
 import { EncryptStorage } from "encrypt-storage";
 
@@ -12,7 +11,7 @@ export const encryptStorage = new EncryptStorage(
 
 const certVAT = async () => {
   Date.prototype.yyyymm = function () {
-    let mm = this.getMonth(); // getMonth() is zero-based
+    let mm = this.getMonth() + 1; // getMonth() is zero-based
 
     return [this.getFullYear(), (mm > 9 ? "" : "0") + mm].join("");
   };
@@ -56,16 +55,15 @@ const certVAT = async () => {
     })
     .then((res) => {
       if (res.errYn === "N") {
-        console.log(res);
         res.phone_no = sessionStorage.getItem("cust_key");
         return res;
       } else {
         alert("부가세 과표증명원 제출에 실패하였습니다.");
+        res.phone_no = sessionStorage.getItem("cust_key");
         return res;
       }
     })
     .then((res) => {
-      console.log(res);
       if (res !== undefined) {
         fetch("https://benefitplus.kr/api/loan_recpetion", {
           method: "POST",
