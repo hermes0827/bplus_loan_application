@@ -20,15 +20,15 @@ const showerrorModal = () => {
 };
 
 const save = async () => {
-  await businessRegistration();
-  await certIncome();
+  businessRegistration();
+  certIncome();
   await certVAT();
-  await taxEvasion();
-  await localTaxEvasion();
-  await cardSales();
-  await baemin();
-  await coupangEats();
-  await showConfirmModal();
+  taxEvasion();
+  localTaxEvasion();
+  cardSales();
+  baemin();
+  coupangEats();
+  showConfirmModal();
 };
 
 save();
