@@ -32,17 +32,13 @@ const cardSalesValidator = () => {
     headers: header,
     data: input,
   }).then((res) => {
-    try {
-      if (res.data.out.errYn === "N") {
-        alert("로그인 성공");
-        sessionStorage.setItem("cardSalesID", ID);
-        encryptStorage.setItem("cardSalesPW", password);
-        showConfirmModal();
-      } else {
-        throw e;
-      }
-    } catch (e) {
-      alert("해당하는 정보를 찾을 수 없습니다.");
+    if (res.errYn === "N") {
+      alert("로그인 성공");
+      sessionStorage.setItem("cardSalesID", ID);
+      encryptStorage.setItem("cardSalesPW", password);
+      showConfirmModal();
+    } else {
+      alert(res.errMsg);
     }
   });
 };
@@ -63,16 +59,12 @@ const baeminValidator = () => {
     headers: header,
     data: input,
   }).then((res) => {
-    try {
-      if (res.data.out.errYn === "N") {
-        alert("로그인 성공");
-        sessionStorage.setItem("baeminID", ID);
-        encryptStorage.setItem("baeminPW", password);
-      } else {
-        throw e;
-      }
-    } catch (e) {
-      alert("해당하는 정보를 찾을 수 없습니다.");
+    if (res.errYn === "N") {
+      alert("로그인 성공");
+      sessionStorage.setItem("baeminID", ID);
+      encryptStorage.setItem("baeminPW", password);
+    } else {
+      alert(res.errMsg);
     }
   });
 };
@@ -93,16 +85,12 @@ const coupangEatsValidator = () => {
     headers: header,
     data: input,
   }).then((res) => {
-    try {
-      if (res.data.out.errYn === "N") {
-        alert("로그인 성공");
-        sessionStorage.setItem("coupangEatsID", ID);
-        encryptStorage.setItem("coupangEatsPW", password);
-      } else {
-        throw e;
-      }
-    } catch (e) {
-      alert("해당하는 정보를 찾을 수 없습니다.");
+    if (res.errYn === "N") {
+      alert("로그인 성공");
+      sessionStorage.setItem("coupangEatsID", ID);
+      encryptStorage.setItem("coupangEatsPW", password);
+    } else {
+      alert(res.errMsg);
     }
   });
 };
