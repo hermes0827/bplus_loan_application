@@ -28,7 +28,7 @@ const passedOrNot = async (e) => {
   } else {
     submitKYC.disabled = true;
 
-    const phone_no = document.querySelector("#cust_key").value;
+    const phone_no = document.querySelector("#phone_no").value;
 
     let passedData = {
       phone_no: phone_no,
