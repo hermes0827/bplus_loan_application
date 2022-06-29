@@ -22,6 +22,7 @@ const certVAT = async () => {
     return [this.getFullYear() - 1, (mm > 9 ? "" : "0") + mm].join("");
   };
 
+  const date = new Date();
   const signCert = sessionStorage.getItem("@bplus:signCert");
   const signPri = sessionStorage.getItem("@bplus:signKey");
   const signPw = sessionStorage.getItem("@bplus:signPw");
