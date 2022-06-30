@@ -32,9 +32,9 @@ const taxEvasion = async () => {
     .then((res) => {
       if (res.out.errYn === "N") {
         res.out.phone_no = sessionStorage.getItem("cust_key");
-        return res;
       } else {
-        return alert("체납 내역 제출에 실패하였습니다.");
+        alert("체납 내역 제출에 실패하였습니다.");
+        return res;
       }
     })
     .then((res) => {
