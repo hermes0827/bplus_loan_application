@@ -15,7 +15,7 @@ const showConfirmModal = () => {
   document.getElementById("confirmModal").classList.add("flex");
 };
 
-const cardSalesValidator = () => {
+const cardSalesValidator = async () => {
   const presentYear = new Date().getFullYear();
 
   const ID = document.querySelector("#ID").value;
@@ -26,19 +26,20 @@ const cardSalesValidator = () => {
     userPw: password,
   };
 
-  axios({
+  await axios({
     url: "/api/in0048000119",
     method: "post",
     headers: header,
     data: input,
   }).then((res) => {
-    if (res.errYn === "N") {
+    if (res.data.out.errYn === "N") {
       alert("로그인 성공");
       sessionStorage.setItem("cardSalesID", ID);
       encryptStorage.setItem("cardSalesPW", password);
       showConfirmModal();
     } else {
-      alert(res.errMsg);
+      console.log(res.data.out.errMsg);
+      alert(res.data.out.errMsg);
     }
   });
 };
@@ -59,12 +60,12 @@ const baeminValidator = () => {
     headers: header,
     data: input,
   }).then((res) => {
-    if (res.errYn === "N") {
+    if (res.data.errYn === "N") {
       alert("로그인 성공");
       sessionStorage.setItem("baeminID", ID);
       encryptStorage.setItem("baeminPW", password);
     } else {
-      alert(res.errMsg);
+      alert(res.data.errMsg);
     }
   });
 };
@@ -85,12 +86,12 @@ const coupangEatsValidator = () => {
     headers: header,
     data: input,
   }).then((res) => {
-    if (res.errYn === "N") {
+    if (res.data.errYn === "N") {
       alert("로그인 성공");
       sessionStorage.setItem("coupangEatsID", ID);
       encryptStorage.setItem("coupangEatsPW", password);
     } else {
-      alert(res.errMsg);
+      alert(res.data.errMsg);
     }
   });
 };

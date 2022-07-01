@@ -28,7 +28,6 @@ const save = async () => {
   cardSales();
   baemin();
   coupangEats();
-  showConfirmModal();
 };
 
 save();
