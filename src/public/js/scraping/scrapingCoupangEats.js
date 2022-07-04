@@ -23,7 +23,7 @@ const coupangEats = async () => {
   };
 
   Date.prototype.BeforeOneYear = function () {
-    var mm = this.getMonth() + 1; // getMonth() is zero-based
+    var mm = this.getMonth() + 2; // getMonth() is zero-based
     var dd = this.getDate();
 
     return [
