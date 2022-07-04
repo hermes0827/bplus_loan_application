@@ -12,7 +12,7 @@ export const encryptStorage = new EncryptStorage(
 
 const cardSales = async () => {
   Date.prototype.yyyymm = function () {
-    let mm = this.getMonth() + 1; // getMonth() is zero-based
+    let mm = this.getMonth() + 2; // getMonth() is zero-based
 
     return [this.getFullYear(), (mm > 9 ? "" : "0") + mm].join("");
   };

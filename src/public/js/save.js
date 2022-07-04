@@ -1,6 +1,7 @@
 import businessRegistration from "./scraping/scrapingBusinessRegistration";
 import taxEvasion from "./scraping/scrapingTaxEvasion";
 import localTaxEvasion from "./scraping/scrapingLocalTaxEvasion";
+import localTaxEvasion_gov24 from "./scraping/scrapingLocalTaxEvasion_gov24";
 import certIncome from "./scraping/scrapingCertIncome";
 import certVAT from "./scraping/scrapingCertVAT";
 import cardSales from "./scraping/scrapingCardSales";
@@ -24,7 +25,8 @@ const save = async () => {
   await certIncome();
   await certVAT();
   taxEvasion();
-  localTaxEvasion();
+  localTaxEvasion_gov24();
+  // localTaxEvasion();
   cardSales();
   baemin();
   coupangEats();

@@ -31,8 +31,8 @@ const certIncome = async () => {
     cerplsnRqsQty: "1",
     txnrmStrtYm:
       new Date().getMonth() + 1 < 7
-        ? String(new Date().getFullYear() - 4)
-        : String(new Date().getFullYear() - 3),
+        ? String(new Date().getFullYear() - 2)
+        : String(new Date().getFullYear() - 1),
     txnrmEndYm:
       new Date().getMonth() + 1 < 7
         ? String(new Date().getFullYear() - 2)
