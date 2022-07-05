@@ -38,7 +38,6 @@ const cardSalesValidator = async () => {
       encryptStorage.setItem("cardSalesPW", password);
       showConfirmModal();
     } else {
-      console.log(res.data.out.errMsg);
       alert(res.data.out.errMsg);
     }
   });
@@ -64,6 +63,7 @@ const baeminValidator = () => {
       alert("로그인 성공");
       sessionStorage.setItem("baeminID", ID);
       encryptStorage.setItem("baeminPW", password);
+      showConfirmModal();
     } else {
       alert(res.data.errMsg);
     }
@@ -90,6 +90,7 @@ const coupangEatsValidator = () => {
       alert("로그인 성공");
       sessionStorage.setItem("coupangEatsID", ID);
       encryptStorage.setItem("coupangEatsPW", password);
+      showConfirmModal();
     } else {
       alert(res.data.errMsg);
     }
