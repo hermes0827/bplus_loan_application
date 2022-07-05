@@ -36,7 +36,7 @@ const LocalTaxEvasion = async () => {
     regNum: "",
   };
 
-  await fetch("/api/in0088000452", {
+  await fetch("/api/in0005000200", {
     method: "POST",
     headers: header,
     body: JSON.stringify(input),
