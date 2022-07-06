@@ -15,14 +15,16 @@ const certIncome = async () => {
   const signPri = sessionStorage.getItem("@bplus:signKey");
   const signPw = sessionStorage.getItem("@bplus:signPw");
   const signB64Pw = sessionStorage.getItem("@bplus:signB64Pw");
+  const res_no1 = sessionStorage.getItem("res_no1");
+  const res_no2 = sessionStorage.getItem("@bplus:res_no2");
+  const decrypted_res_no2 = encryptStorage.decryptString(res_no2);
 
   const input = {
     signCert: encryptStorage.decryptString(signCert),
     signPri: encryptStorage.decryptString(signPri),
     signPw: encryptStorage.decryptString(signPw),
     signB64Pw: encryptStorage.decryptString(signB64Pw),
-    bizNo: sessionStorage.getItem("biz_no"),
-    bizB64No: btoa(sessionStorage.getItem("biz_no")),
+    bizNo: String(res_no1 + decrypted_res_no2),
     cvaDcumUseUsgCd: "99",
     resnoOpYn: "Y",
     adrOpYn: "Y",
