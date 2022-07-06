@@ -27,7 +27,7 @@ const coupangEats = async () => {
     var dd = this.getDate();
 
     return [
-      this.getFullYear(),
+      this.getFullYear() - 1,
       (mm > 9 ? "" : "0") + mm,
       (dd > 9 ? "" : "0") + dd,
     ].join("");
