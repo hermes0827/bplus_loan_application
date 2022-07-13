@@ -25,8 +25,8 @@ const save = async () => {
   await certIncome();
   await certVAT();
   taxEvasion();
-  localTaxEvasion_gov24();
-  // localTaxEvasion();
+  // localTaxEvasion_gov24();
+  localTaxEvasion();
   cardSales();
   baemin();
   coupangEats();
