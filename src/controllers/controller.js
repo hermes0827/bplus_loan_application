@@ -37,9 +37,9 @@ export const postKyc = (req, res) => {
 export const notAllowed = (req, res) => res.render("notAllowed");
 
 export const postCert = async (req, res) => {
-  // sendKakao("townloan_accepted", req.body.phone_no);
-  // sendNateon(req.body.name, req.body.phone_no);
-  // sendEmail(req.body.email);
+  sendKakao("townloan_accepted", req.body.phone_no);
+  sendNateon(req.body.name, req.body.phone_no);
+  sendEmail(req.body.email);
   res.render("cert");
 };
 
